@@ -9,14 +9,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('quiz_attempts', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_quiz_attempt');
 
             $table->foreignId('student_id')
-                ->constrained('users')
+                ->constrained('user', 'id_user')
                 ->cascadeOnDelete();
 
             $table->foreignId('quiz_id')
-                ->constrained('quiz')
+                ->constrained('quiz', 'id_quiz')
                 ->cascadeOnDelete();
 
             $table->decimal('skor_persen', 5, 2)

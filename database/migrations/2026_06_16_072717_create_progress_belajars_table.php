@@ -9,14 +9,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('progress_belajar', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_progress_belajar');
 
             $table->foreignId('student_id')
-                ->constrained('users')
+                ->constrained('user', 'id_user')
                 ->cascadeOnDelete();
 
             $table->foreignId('materi_id')
-                ->constrained('materi')
+                ->constrained('materi', 'id_materi')
                 ->cascadeOnDelete();
 
             $table->enum('status', [

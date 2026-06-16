@@ -9,18 +9,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jawaban_siswa', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_jawaban_siswa');
 
             $table->foreignId('attempt_id')
-                ->constrained('quiz_attempts')
+                ->constrained('quiz_attempts', 'id_quiz_attempt')
                 ->cascadeOnDelete();
 
             $table->foreignId('soal_id')
-                ->constrained('soal')
+                ->constrained('soal', 'id_soal')
                 ->cascadeOnDelete();
 
             $table->foreignId('pilihan_jawaban_id')
-                ->constrained('pilihan_jawaban')
+                ->constrained('pilihan_jawaban', 'id_pilihan_jawaban')
                 ->cascadeOnDelete();
 
             $table->timestamps();
