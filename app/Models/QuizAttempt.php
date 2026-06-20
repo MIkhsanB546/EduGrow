@@ -14,7 +14,7 @@ class QuizAttempt extends Model
     protected $primaryKey = 'id_quiz_attempt';
 
     protected $fillable = [
-        'id_student',
+        'id_siswa',
         'id_quiz',
         'skor_persen',
         'bintang',
@@ -26,7 +26,7 @@ class QuizAttempt extends Model
     {
         return $this->belongsTo(
             User::class,
-            'id_student'
+            'id_siswa'
         );
     }
 

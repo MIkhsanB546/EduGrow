@@ -33,11 +33,11 @@ class User extends Authenticatable
 
     public function materi()
     {
-        return $this->hasMany(Materi::class, 'id_teacher');
+        return $this->hasMany(Materi::class, 'id_guru');
     }
 
     public function quizAttempts()
     {
-        return $this->hasMany(QuizAttempt::class, 'id_student');
+        return $this->hasMany(QuizAttempt::class, 'id_siswa');
     }
 }

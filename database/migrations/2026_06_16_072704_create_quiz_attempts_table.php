@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('quiz_attempts', function (Blueprint $table) {
             $table->id('id_quiz_attempt');
 
-            $table->foreignId('id_student')
+            $table->foreignId('id_siswa')
                 ->constrained('users', 'id_user')
                 ->cascadeOnDelete();
 
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique([
-                'id_student',
+                'id_siswa',
                 'id_quiz',
                 'attempt_ke'
             ]);
