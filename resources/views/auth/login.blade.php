@@ -60,11 +60,18 @@
             </div>
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
+                @error('email')
+                    <div class="alert alert-danger" role="alert">
+                        {{ $message }}
+                    </div>
+                @enderror
 
-                <form action="../index3.html" method="post">
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
                     <div class="input-group mb-1">
                         <div class="form-floating">
-                            <input id="loginEmail" type="email" class="form-control" value="" placeholder="" />
+                            <input id="loginEmail" name="email" type="email" class="form-control" value=""
+                                placeholder="" />
                             <label for="loginEmail">Email</label>
                         </div>
                         <div class="input-group-text">
@@ -73,7 +80,8 @@
                     </div>
                     <div class="input-group mb-1">
                         <div class="form-floating">
-                            <input id="loginPassword" type="password" class="form-control" placeholder="" />
+                            <input id="loginPassword" name="password" type="password" class="form-control"
+                                placeholder="" />
                             <label for="loginPassword">Password</label>
                         </div>
                         <div class="input-group-text">
@@ -93,13 +101,6 @@
                     <!--end::Row-->
                 </form>
 
-
-                <p class="mb-1">
-                    <a href="forgot-password.html">I forgot my password</a>
-                </p>
-                <p class="mb-0">
-                    <a href="register.html" class="text-center"> Register a new membership </a>
-                </p>
             </div>
             <!-- /.login-card-body -->
         </div>
