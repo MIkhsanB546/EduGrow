@@ -24,7 +24,7 @@ class Materi extends Model
         'is_published',
     ];
 
-    public function teacher()
+    public function guru()
     {
         return $this->belongsTo(User::class, 'id_guru');
     }

@@ -22,7 +22,7 @@ class QuizAttempt extends Model
         'attempt_ke',
     ];
 
-    public function student()
+    public function siswa()
     {
         return $this->belongsTo(
             User::class,
@@ -35,6 +35,14 @@ class QuizAttempt extends Model
         return $this->belongsTo(
             Quiz::class,
             'id_quiz'
+        );
+    }
+
+    public function jawabanSiswa()
+    {
+        return $this->hasMany(
+            JawabanSiswa::class,
+            'id_quiz_attempt'
         );
     }
 }

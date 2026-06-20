@@ -30,4 +30,12 @@ class Soal extends Model
             'id_soal'
         );
     }
+
+    public function jawabanSiswa()
+    {
+        return $this->hasMany(
+            JawabanSiswa::class,
+            'id_soal'
+        );
+    }
 }

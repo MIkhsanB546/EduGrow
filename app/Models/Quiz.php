@@ -30,7 +30,7 @@ class Quiz extends Model
         return $this->hasMany(Soal::class, 'id_quiz');
     }
 
-    public function attempts()
+    public function quizAttempts()
     {
         return $this->hasMany(
             QuizAttempt::class,

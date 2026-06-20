@@ -26,4 +26,12 @@ class PilihanJawaban extends Model
             'id_soal'
         );
     }
+
+    public function jawabanSiswa()
+    {
+        return $this->hasMany(
+            JawabanSiswa::class,
+            'id_pilihan_jawaban'
+        );
+    }
 }

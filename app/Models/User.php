@@ -40,4 +40,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(QuizAttempt::class, 'id_siswa');
     }
+
+    public function scopeGuru($query)
+    {
+        return $query->where('role', 'guru');
+    }
+
+    public function scopeSiswa($query)
+    {
+        return $query->where('role', 'siswa');
+    }
 }
