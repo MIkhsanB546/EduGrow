@@ -3,6 +3,9 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
+use App\Http\Controllers\Student\MateriController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -15,13 +18,13 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
 
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/siswa', [StudentDashboardController::class, 'index'])->name('siswa.dashboard');
 
-    Route::get('/siswa', function () {
-        return view('student.dashboard');
-    })->name('siswa.dashboard');
+    Route::prefix('siswa')->name('siswa.')->group(function () {
+        Route::get('/materi', [MateriController::class, 'index'])->name('materi.index');
+        Route::get('/materi/{materi}', [MateriController::class, 'show'])->name('materi.show');
+    });
 
     Route::get('/', function () {
         $role = auth()->user()->role;
