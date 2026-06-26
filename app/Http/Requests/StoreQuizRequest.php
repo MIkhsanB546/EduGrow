@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * FormRequest untuk validasi penyimpanan quiz baru.
+ */
 class StoreQuizRequest extends FormRequest
 {
     public function authorize(): bool
@@ -11,6 +14,9 @@ class StoreQuizRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Aturan validasi untuk quiz baru.
+     */
     public function rules(): array
     {
         return [
@@ -21,6 +27,9 @@ class StoreQuizRequest extends FormRequest
         ];
     }
 
+    /**
+     * Label atribut dalam Bahasa Indonesia.
+     */
     public function attributes(): array
     {
         return [

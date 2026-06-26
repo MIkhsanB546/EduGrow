@@ -3,8 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content')
+{{-- Konten dashboard --}}
 <div class="container-fluid">
+    {{-- Kartu statistik --}}
     <div class="row g-3 mb-4">
+        {{-- Blok kartu untuk role Guru --}}
         @if (isset($isGuru) && $isGuru)
         <div class="col-lg-3 col-6">
             <div class="card">
@@ -66,6 +69,7 @@
                 </div>
             </div>
         </div>
+        {{-- Blok kartu untuk role Admin --}}
         @else
         <div class="col-lg-3 col-6">
             <div class="card">
@@ -130,6 +134,7 @@
         @endif
     </div>
 
+    {{-- Tabel materi terbaru --}}
     <div class="row g-3">
         <div class="col-lg-6">
             <div class="card">
@@ -167,6 +172,7 @@
             </div>
         </div>
 
+        {{-- Tabel quiz terbaru --}}
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
@@ -202,6 +208,7 @@
         </div>
     </div>
 </div>
+{{-- Inisialisasi DataTable --}}
 @push('scripts')
 <script>
 $(document).ready(function() {

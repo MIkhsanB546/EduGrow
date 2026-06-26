@@ -3,13 +3,16 @@
 @section('title', 'Hasil Siswa')
 
 @section('content')
+{{-- Awal konten halaman --}}
 <div class="container-fluid">
+    {{-- Kartu hasil siswa --}}
     <div class="card">
         <div class="card-header">
             <h5 class="card-title mb-0">Hasil Siswa</h5>
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
+                        {{-- Tabel hasil pengerjaan quiz --}}
                         <table id="hasilSiswaTable" class="table table-hover mb-0">
                     <thead class="table-light">
                         <tr>
@@ -24,6 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{-- Looping data attempt --}}
                         @forelse ($attempts as $attempt)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
@@ -36,6 +40,7 @@
                                 </span>
                             </td>
                             <td>
+                                {{-- Render bintang berdasarkan skor --}}
                                 @for ($i = 1; $i <= 3; $i++)
                                     <i class="bi bi-star{{ $i <= $attempt->bintang ? '-fill' : '' }} text-warning small"></i>
                                 @endfor
@@ -45,6 +50,7 @@
                                 {{ \Carbon\Carbon::parse($attempt->tanggal_pengerjaan)->translatedFormat('d M Y') }}
                             </td>
                         </tr>
+                        {{-- Kondisi jika belum ada data --}}
                         @empty
                         <tr>
                             <td colspan="8" class="text-center text-muted py-3">Belum ada hasil quiz</td>
@@ -56,6 +62,7 @@
         </div>
     </div>
 </div>
+{{-- Inisialisasi DataTables --}}
 @push('scripts')
 <script>
 $(document).ready(function() {

@@ -3,7 +3,9 @@
 @section('title', 'Tambah Soal')
 
 @section('content')
+{{-- Awal konten halaman --}}
 <div class="container-fluid">
+    {{-- Kartu form tambah soal --}}
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0">Tambah Soal - {{ $quiz->judul }}</h5>
@@ -12,6 +14,7 @@
             </a>
         </div>
         <div class="card-body">
+            {{-- Notifikasi error validasi --}}
             @if($errors->any())
             <div class="alert alert-danger">
                 <ul class="mb-0">
@@ -21,9 +24,11 @@
                 </ul>
             </div>
             @endif
+            {{-- Form tambah soal --}}
             <form action="{{ route('dashboard.quiz.soal.store', $quiz) }}" method="post">
                 @csrf
 
+                {{-- Field: pertanyaan --}}
                 <div class="mb-3">
                     <label for="pertanyaan" class="form-label">Pertanyaan</label>
                     <textarea name="pertanyaan" id="pertanyaan" rows="3"
@@ -33,6 +38,7 @@
                     @enderror
                 </div>
 
+                {{-- Field: pilihan jawaban --}}
                 <div class="mb-3">
                     <label class="form-label">Pilihan Jawaban</label>
                     <div id="pilihanContainer">
@@ -59,6 +65,7 @@
                     @enderror
                 </div>
 
+                {{-- Tombol aksi: simpan dan batal --}}
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <a href="{{ route('dashboard.quiz.soal.index', $quiz) }}" class="btn btn-secondary">Batal</a>

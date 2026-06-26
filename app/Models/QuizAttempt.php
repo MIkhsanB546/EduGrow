@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Model percobaan quiz oleh siswa.
+ */
 class QuizAttempt extends Model
 {
     use HasFactory;
@@ -22,6 +25,9 @@ class QuizAttempt extends Model
         'attempt_ke',
     ];
 
+    /**
+     * Relasi ke siswa yang mengerjakan quiz.
+     */
     public function siswa()
     {
         return $this->belongsTo(
@@ -30,6 +36,9 @@ class QuizAttempt extends Model
         );
     }
 
+    /**
+     * Relasi ke quiz yang dikerjakan.
+     */
     public function quiz()
     {
         return $this->belongsTo(
@@ -38,6 +47,9 @@ class QuizAttempt extends Model
         );
     }
 
+    /**
+     * Relasi ke jawaban siswa pada percobaan ini.
+     */
     public function jawabanSiswa()
     {
         return $this->hasMany(

@@ -1,16 +1,20 @@
 @extends('layouts.student')
 
+{{-- Judul halaman --}}
 @section('title', 'Edit Profil')
 
 @section('content')
 <div class="max-w-2xl mx-auto">
+    {{-- Header halaman --}}
     <div class="mb-8">
         <h1 class="text-3xl font-extrabold text-gray-900">Edit Profil</h1>
         <p class="text-gray-500 mt-1 text-lg">Perbarui informasi akun kamu</p>
     </div>
 
+    {{-- Kartu form profil --}}
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         <div class="p-6 sm:p-8">
+            {{-- Error validasi --}}
             @if($errors->any())
             <div class="alert alert-danger">
                 <ul class="mb-0">
@@ -20,10 +24,12 @@
                 </ul>
             </div>
             @endif
+            {{-- Form edit profil --}}
             <form action="{{ route('siswa.profile.update') }}" method="POST">
                 @csrf
                 @method('PUT')
 
+                {{-- Field nama lengkap --}}
                 <div class="mb-5">
                     <label for="name" class="block text-sm font-semibold text-gray-700 mb-1.5">
                         <i class="bi bi-person me-1 text-[#095890]"></i> Nama Lengkap
@@ -36,6 +42,7 @@
                     @enderror
                 </div>
 
+                {{-- Field email --}}
                 <div class="mb-5">
                     <label for="email" class="block text-sm font-semibold text-gray-700 mb-1.5">
                         <i class="bi bi-envelope me-1 text-[#095890]"></i> Email
@@ -50,11 +57,13 @@
 
                 <hr class="my-6 border-gray-200">
 
+                {{-- Informasi password opsional --}}
                 <p class="text-sm text-gray-500 mb-4">
                     <i class="bi bi-info-circle me-1 text-[#095890]"></i>
                     Kosongkan password jika tidak ingin mengubahnya.
                 </p>
 
+                {{-- Field password baru --}}
                 <div class="mb-5">
                     <label for="password" class="block text-sm font-semibold text-gray-700 mb-1.5">
                         <i class="bi bi-lock me-1 text-[#095890]"></i> Password Baru
@@ -67,6 +76,7 @@
                     @enderror
                 </div>
 
+                {{-- Field konfirmasi password --}}
                 <div class="mb-6">
                     <label for="password_confirmation" class="block text-sm font-semibold text-gray-700 mb-1.5">
                         <i class="bi bi-lock-fill me-1 text-[#095890]"></i> Konfirmasi Password Baru
@@ -76,6 +86,7 @@
                         placeholder="Ulangi password baru">
                 </div>
 
+                {{-- Tombol aksi form --}}
                 <div class="flex items-center gap-3 pt-2">
                     <button type="submit"
                         class="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold text-white rounded-lg transition hover:brightness-110"

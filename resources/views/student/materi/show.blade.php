@@ -1,5 +1,6 @@
 @extends('layouts.student')
 
+{{-- Judul halaman dinamis dari materi --}}
 @section('title', $materi->judul)
 
 @php
@@ -14,13 +15,17 @@ $gradient = $kategoriColors[$materi->kategori->nama_kategori ?? ''] ?? 'from-ind
 @endphp
 
 @section('content')
+{{-- Tombol kembali ke daftar materi --}}
 <a href="{{ route('siswa.materi.index') }}" class="inline-flex items-center text-sm text-gray-500 hover:text-gray-900 transition-colors mb-4">
     <i class="bi bi-arrow-left me-1"></i> Kembali ke Materi
 </a>
 
+{{-- Konten utama dan sidebar informasi materi --}}
 <div class="grid lg:grid-cols-3 gap-6">
+    {{-- Kolom konten utama --}}
     <div class="lg:col-span-2">
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            {{-- Header dengan thumbnail/gradient --}}
             <div class="h-48 bg-gradient-to-br {{ $gradient }} flex items-center justify-center">
                 @if ($materi->thumbnail)
                 <img src="{{ asset('storage/' . $materi->thumbnail) }}" alt="{{ $materi->judul }}" class="w-full h-full object-cover">
@@ -29,6 +34,7 @@ $gradient = $kategoriColors[$materi->kategori->nama_kategori ?? ''] ?? 'from-ind
                 @endif
             </div>
             <div class="p-6">
+                {{-- Badge kategori dan jenjang --}}
                 <div class="flex flex-wrap gap-2 mb-4">
                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700">
                         {{ $materi->kategori->nama_kategori ?? 'Umum' }}
@@ -44,14 +50,17 @@ $gradient = $kategoriColors[$materi->kategori->nama_kategori ?? ''] ?? 'from-ind
                     <i class="bi bi-person me-1"></i>{{ $materi->guru->name ?? '-' }}
                 </p>
 
+                {{-- Deskripsi materi --}}
                 @if ($materi->deskripsi)
                 <div class="prose prose-sm max-w-none text-gray-600 mb-6">
                     {{ $materi->deskripsi }}
                 </div>
                 @endif
 
+                {{-- Tombol aksi: unduh materi dan kerjakan quiz --}}
                 <div class="flex flex-wrap gap-3">
                     @if ($materi->file_materi)
+                    {{-- Tombol unduh file materi --}}
                     <a href="{{ asset('storage/' . $materi->file_materi) }}"
                         class="inline-flex items-center px-5 py-2.5 bg-indigo-50 text-indigo-700 rounded-xl text-sm font-semibold hover:bg-indigo-100 transition-colors" target="_blank">
                         <i class="bi bi-download me-2"></i> Unduh Materi
@@ -60,6 +69,7 @@ $gradient = $kategoriColors[$materi->kategori->nama_kategori ?? ''] ?? 'from-ind
 
                     @php $firstQuiz = $materi->quiz->first(); @endphp
                     @if ($firstQuiz)
+                    {{-- Tombol kerjakan quiz --}}
                     <a href="{{ route('siswa.quiz.start', $firstQuiz) }}"
                         class="inline-flex items-center px-5 py-2.5 bg-emerald-600 text-white rounded-xl text-sm font-semibold hover:bg-emerald-700 transition-colors shadow-sm">
                         <i class="bi bi-pencil-square me-2"></i> Kerjakan Quiz
@@ -70,6 +80,7 @@ $gradient = $kategoriColors[$materi->kategori->nama_kategori ?? ''] ?? 'from-ind
         </div>
     </div>
 
+    {{-- Sidebar informasi materi --}}
     <div class="lg:col-span-1">
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
             <h3 class="font-bold text-gray-900 mb-4">Informasi Materi</h3>

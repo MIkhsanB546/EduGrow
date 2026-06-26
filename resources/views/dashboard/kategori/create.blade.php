@@ -3,6 +3,7 @@
 @section('title', 'Tambah Kategori')
 
 @section('content')
+{{-- Form tambah kategori --}}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -11,6 +12,7 @@
                     <h5 class="card-title mb-0">Tambah Kategori</h5>
                 </div>
                 <div class="card-body">
+                    {{-- Validasi error --}}
                     @if($errors->any())
                     <div class="alert alert-danger">
                         <ul class="mb-0">
@@ -23,6 +25,7 @@
                     <form action="{{ route('dashboard.kategori.store') }}" method="post">
                         @csrf
 
+                        {{-- Field nama kategori --}}
                         <div class="mb-3">
                             <label for="nama_kategori" class="form-label">Nama Kategori <span class="text-danger">*</span></label>
                             <input type="text" name="nama_kategori" id="nama_kategori" class="form-control @error('nama_kategori') is-invalid @enderror" value="{{ old('nama_kategori') }}" maxlength="100" required>
@@ -31,6 +34,7 @@
                             @enderror
                         </div>
 
+                        {{-- Field deskripsi --}}
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">Deskripsi</label>
                             <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="3">{{ old('deskripsi') }}</textarea>
@@ -39,6 +43,7 @@
                             @enderror
                         </div>
 
+                        {{-- Tombol aksi --}}
                         <div class="d-flex gap-2">
                             <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-save"></i> Simpan

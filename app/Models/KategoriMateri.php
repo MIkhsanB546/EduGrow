@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Model kategori materi (Matematika, IPA, dll).
+ */
 class KategoriMateri extends Model
 {
   use HasFactory;
@@ -18,6 +21,9 @@ class KategoriMateri extends Model
     'deskripsi'
   ];
 
+  /**
+   * Relasi ke materi dalam kategori ini.
+   */
   public function materi()
   {
     return $this->hasMany(Materi::class, 'id_kategori_materi');

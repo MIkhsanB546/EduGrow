@@ -8,8 +8,14 @@ use App\Http\Requests\UpdateQuizRequest;
 use App\Models\Quiz;
 use App\Models\Materi;
 
+/**
+ * Controller untuk mengelola data quiz.
+ */
 class QuizController extends Controller
 {
+    /**
+     * Menampilkan daftar quiz sesuai role.
+     */
     public function index()
     {
         $user = auth()->user();
@@ -26,6 +32,9 @@ class QuizController extends Controller
         return view('dashboard.quiz.index', compact('quizList'));
     }
 
+    /**
+     * Menampilkan form tambah quiz.
+     */
     public function create()
     {
         $user = auth()->user();
@@ -37,6 +46,9 @@ class QuizController extends Controller
         return view('dashboard.quiz.create', compact('materiList'));
     }
 
+    /**
+     * Menyimpan quiz baru.
+     */
     public function store(StoreQuizRequest $request)
     {
         $data = $request->validated();
@@ -46,6 +58,9 @@ class QuizController extends Controller
             ->with('success', 'Quiz berhasil dibuat.');
     }
 
+    /**
+     * Menampilkan detail quiz beserta soal.
+     */
     public function show(Quiz $quiz)
     {
         $this->authorize('view', $quiz);
@@ -53,6 +68,9 @@ class QuizController extends Controller
         return view('dashboard.quiz.show', compact('quiz'));
     }
 
+    /**
+     * Menampilkan form edit quiz.
+     */
     public function edit(Quiz $quiz)
     {
         $this->authorize('update', $quiz);
@@ -65,6 +83,9 @@ class QuizController extends Controller
         return view('dashboard.quiz.edit', compact('quiz', 'materiList'));
     }
 
+    /**
+     * Memperbarui data quiz.
+     */
     public function update(UpdateQuizRequest $request, Quiz $quiz)
     {
         $this->authorize('update', $quiz);
@@ -74,6 +95,9 @@ class QuizController extends Controller
             ->with('success', 'Quiz berhasil diperbarui.');
     }
 
+    /**
+     * Menghapus quiz.
+     */
     public function destroy(Quiz $quiz)
     {
         $this->authorize('delete', $quiz);

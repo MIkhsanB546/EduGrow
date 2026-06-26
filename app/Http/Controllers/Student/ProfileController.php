@@ -6,13 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfileRequest;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Controller untuk pengelolaan profil siswa.
+ */
 class ProfileController extends Controller
 {
+    /**
+     * Menampilkan halaman profil siswa.
+     */
     public function index()
     {
         return view('student.profile.index', ['user' => auth()->user()]);
     }
 
+    /**
+     * Memperbarui data profil siswa.
+     */
     public function update(UpdateProfileRequest $request)
     {
         $user = auth()->user();

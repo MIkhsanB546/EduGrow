@@ -1,13 +1,16 @@
 @extends('layouts.student')
 
+{{-- Judul halaman --}}
 @section('title', 'Dashboard')
 
 @section('content')
+{{-- Header sambutan siswa --}}
 <div class="mb-8">
     <h1 class="text-3xl font-extrabold text-gray-900">Halo, {{ auth()->user()->name }}! 👋</h1>
     <p class="text-gray-500 mt-1 text-lg">Lanjutkan perjalanan belajarmu hari ini!</p>
 </div>
 
+{{-- Kartu statistik (progress, skor, quiz selesai, bintang) --}}
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
         <div class="flex items-center justify-between mb-3">
@@ -55,6 +58,7 @@
     </div>
 </div>
 
+{{-- Blok quiz yang belum selesai --}}
 @if ($unfinishedQuiz->isNotEmpty())
 <div class="mb-8">
     <div class="flex items-center justify-between mb-4">
@@ -71,6 +75,7 @@
                 <p class="text-xs text-gray-500 mb-4">
                     <i class="bi bi-tag me-1"></i>{{ $quiz->materi->kategori->nama_kategori ?? 'Umum' }}
                 </p>
+                {{-- Tombol kerjakan quiz --}}
                 <a href="{{ route('siswa.quiz.start', $quiz) }}" class="inline-flex items-center justify-center w-full px-4 py-2.5 bg-indigo-50 text-indigo-700 rounded-xl text-sm font-semibold hover:bg-indigo-100 transition-colors">
                     Kerjakan Quiz <i class="bi bi-arrow-right ms-1"></i>
                 </a>
@@ -79,6 +84,7 @@
         @endforeach
     </div>
 </div>
+{{-- Tampilan ketika semua quiz sudah selesai --}}
 @else
 <div class="mb-8">
     <div class="flex items-center justify-between mb-4">
@@ -92,16 +98,19 @@
 </div>
 @endif
 
+{{-- Blok riwayat quiz terbaru --}}
 @if ($recentAttempts->isNotEmpty())
 <div>
     <div class="flex items-center justify-between mb-4">
         <h2 class="text-xl font-bold text-gray-900">Riwayat Quiz Terbaru</h2>
+        {{-- Tautan ke halaman riwayat lengkap --}}
         <a href="{{ route('siswa.quiz.history') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors">
             Lihat Semua <i class="bi bi-arrow-right"></i>
         </a>
     </div>
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div class="overflow-x-auto">
+            {{-- Tabel riwayat quiz --}}
             <table class="w-full">
                 <thead>
                     <tr class="bg-gray-50 border-b border-gray-100">
@@ -137,6 +146,7 @@
         </div>
     </div>
 </div>
+{{-- Tampilan ketika tidak ada riwayat quiz --}}
 @else
 <div class="text-center py-12">
     <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -144,6 +154,7 @@
     </div>
     <h3 class="text-lg font-semibold text-gray-900 mb-1">Belum ada riwayat quiz</h3>
     <p class="text-gray-500 text-sm">Mulai kerjakan quiz untuk melihat riwayatmu!</p>
+    {{-- Tombol navigasi ke daftar quiz --}}
     <a href="{{ route('siswa.quiz.index') }}" class="inline-flex items-center mt-4 px-6 py-2.5 bg-indigo-600 text-white rounded-xl text-sm font-semibold hover:bg-indigo-700 transition-colors shadow-sm">
         Lihat Quiz Tersedia
     </a>
@@ -151,6 +162,7 @@
 @endif
 @endsection
 
+{{-- CSS gradien untuk kategori materi --}}
 @push('styles')
 <style>
     .bg-gradient-mtk { background: linear-gradient(135deg, #6366f1, #8b5cf6); }

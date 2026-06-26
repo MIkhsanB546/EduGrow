@@ -3,7 +3,9 @@
 @section('title', 'Profil')
 
 @section('content')
+{{-- Awal konten halaman --}}
 <div class="container-fluid">
+    {{-- Notifikasi sukses --}}
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -11,6 +13,7 @@
         </div>
     @endif
 
+    {{-- Notifikasi error validasi --}}
     @if($errors->any())
     <div class="alert alert-danger">
         <ul class="mb-0">
@@ -21,6 +24,7 @@
     </div>
     @endif
 
+    {{-- Kartu profil pengguna --}}
     <div class="row">
         <div class="col-md-4">
             <div class="card card-primary card-outline">
@@ -58,9 +62,11 @@
             </div>
         </div>
 
+        {{-- Kartu pengaturan profil --}}
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header p-2">
+                    {{-- Tab navigasi --}}
                     <ul class="nav nav-pills">
                         <li class="nav-item">
                             <a class="nav-link active" href="#profil" data-bs-toggle="tab">
@@ -76,6 +82,7 @@
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
+                        {{-- Tab panel informasi profil --}}
                         <div class="tab-pane active" id="profil">
                             <table class="table table-borderless mb-0">
                                 <tr>
@@ -106,7 +113,9 @@
                             </table>
                         </div>
 
+                        {{-- Tab panel form pengaturan --}}
                         <div class="tab-pane" id="pengaturan">
+                            {{-- Form update profil --}}
                             <form action="{{ route('dashboard.profile.update') }}" method="post">
                                 @csrf
                                 @method('put')
@@ -133,6 +142,7 @@
 
                                 <hr>
 
+                                {{-- Field: password baru --}}
                                 <div class="form-group mb-3">
                                     <label for="password" class="form-label">Password Baru <span class="text-muted">(opsional)</span></label>
                                     <input type="password" name="password" id="password"

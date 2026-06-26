@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * FormRequest untuk validasi perubahan data materi.
+ */
 class UpdateMateriRequest extends FormRequest
 {
     public function authorize(): bool
@@ -11,6 +14,9 @@ class UpdateMateriRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Aturan validasi untuk update materi.
+     */
     public function rules(): array
     {
         return [
@@ -24,6 +30,9 @@ class UpdateMateriRequest extends FormRequest
         ];
     }
 
+    /**
+     * Label atribut dalam Bahasa Indonesia.
+     */
     public function attributes(): array
     {
         return [

@@ -5,6 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/**
+ * FormRequest untuk validasi perubahan profil pengguna.
+ */
 class UpdateProfileRequest extends FormRequest
 {
     public function authorize(): bool
@@ -12,6 +15,9 @@ class UpdateProfileRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Aturan validasi untuk update profil.
+     */
     public function rules(): array
     {
         return [
@@ -21,6 +27,9 @@ class UpdateProfileRequest extends FormRequest
         ];
     }
 
+    /**
+     * Label atribut dalam Bahasa Indonesia.
+     */
     public function attributes(): array
     {
         return [

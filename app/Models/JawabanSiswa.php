@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Model jawaban yang diberikan siswa pada setiap soal.
+ */
 class JawabanSiswa extends Model
 {
     use HasFactory;
@@ -20,7 +23,9 @@ class JawabanSiswa extends Model
         'is_correct',
     ];
 
-
+    /**
+     * Relasi ke percobaan quiz.
+     */
     public function quizAttempt()
     {
         return $this->belongsTo(
@@ -29,7 +34,9 @@ class JawabanSiswa extends Model
         );
     }
 
-
+    /**
+     * Relasi ke soal yang dijawab.
+     */
     public function soal()
     {
         return $this->belongsTo(
@@ -38,7 +45,9 @@ class JawabanSiswa extends Model
         );
     }
 
-
+    /**
+     * Relasi ke pilihan jawaban yang dipilih.
+     */
     public function pilihanJawaban()
     {
         return $this->belongsTo(

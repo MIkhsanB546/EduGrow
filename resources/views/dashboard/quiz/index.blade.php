@@ -9,7 +9,9 @@
 @endpush
 
 @section('content')
+    {{-- Awal konten halaman --}}
     <div class="container-fluid">
+        {{-- Notifikasi sukses --}}
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
@@ -17,6 +19,7 @@
             </div>
         @endif
 
+        {{-- Kartu daftar quiz --}}
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Daftar Quiz</h3>
@@ -27,6 +30,7 @@
                 </div>
             </div>
             <div class="card-body">
+                {{-- Tabel daftar quiz --}}
                 <table id="quizTable" class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -39,6 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{-- Looping data quiz --}}
                         @forelse ($quizList as $quiz)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -47,6 +52,7 @@
                                 <td>{{ $quiz->durasi_menit ? $quiz->durasi_menit . ' menit' : '-' }}</td>
                                 <td>{{ $quiz->soal_count ?? $quiz->soal->count() }}</td>
                                 <td>
+                                    {{-- Tombol aksi: lihat, edit, hapus --}}
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('dashboard.quiz.show', $quiz) }}" class="btn btn-info" title="Lihat">
                                             <i class="bi bi-eye"></i>
@@ -65,6 +71,7 @@
                                     </div>
                                 </td>
                             </tr>
+                        {{-- Kondisi jika data kosong --}}
                         @empty
                             <tr>
                                 <td colspan="6" class="text-center text-muted py-4">Belum ada quiz</td>
@@ -75,6 +82,7 @@
             </div>
         </div>
     </div>
+    {{-- Inisialisasi DataTables --}}
     @push('scripts')
         <script>
             $(document).ready(function() {

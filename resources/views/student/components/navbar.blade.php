@@ -1,5 +1,7 @@
+{{-- Navigasi utama siswa --}}
 <nav class="navbar navbar-expand-lg bg-white shadow-sm" style="border-bottom: 1px solid #DDE7EF; min-height: 64px;">
     <div class="container-fluid px-4">
+        {{-- Brand/logo --}}
         <a class="navbar-brand d-flex align-items-center gap-2 py-0" href="{{ route('siswa.dashboard') }}">
             <img src="{{ asset('images/sipinter-logo.png') }}" alt="SIPINTER" style="height:40px; width:auto;">
             <div>
@@ -9,11 +11,13 @@
             </div>
         </a>
 
+        {{-- Tombol toggler untuk mobile --}}
         <button class="navbar-toggler border-0" type="button" id="navbarToggler" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="navbar-menu" id="navbarMenu">
+            {{-- Navigasi utama --}}
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
                 <li class="nav-item">
                     <a class="nav-link rounded-2 px-3 {{ request()->routeIs('siswa.dashboard') ? 'active-si' : '' }}"
@@ -41,6 +45,7 @@
                 </li>
             </ul>
 
+            {{-- Dropdown profil pengguna --}}
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle d-flex align-items-center gap-1 px-3 rounded-2" href="#"
@@ -60,6 +65,7 @@
                             <hr class="dropdown-divider" style="border-color:#DDE7EF;">
                         </li>
                         <li>
+                            {{-- Form logout --}}
                             <form action="{{ route('logout') }}" method="post" class="m-0">
                                 @csrf
                                 <button class="dropdown-item rounded-2 py-2" type="submit">
@@ -74,6 +80,7 @@
     </div>
 </nav>
 
+{{-- Script toggle navbar mobile --}}
 <script>
     (function() {
         var toggler = document.getElementById('navbarToggler');

@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Model materi pembelajaran.
+ */
 class Materi extends Model
 {
     use HasFactory;
@@ -24,16 +27,25 @@ class Materi extends Model
         'is_published',
     ];
 
+    /**
+     * Relasi ke guru pembuat materi.
+     */
     public function guru()
     {
         return $this->belongsTo(User::class, 'id_guru', 'id_user');
     }
 
+    /**
+     * Relasi ke jenjang materi.
+     */
     public function jenjang()
     {
         return $this->belongsTo(Jenjang::class, 'id_jenjang');
     }
 
+    /**
+     * Relasi ke kategori materi.
+     */
     public function kategori()
     {
         return $this->belongsTo(
@@ -42,6 +54,9 @@ class Materi extends Model
         );
     }
 
+    /**
+     * Relasi ke quiz yang terkait dengan materi.
+     */
     public function quiz()
     {
         return $this->hasMany(Quiz::class, 'id_materi');

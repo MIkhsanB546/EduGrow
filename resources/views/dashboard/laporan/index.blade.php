@@ -3,6 +3,7 @@
 @section('title', 'Laporan')
 
 @push('styles')
+{{-- Style tambahan --}}
 <style>
     .small-box { border-radius: .25rem; }
     .info-box-icon { border-radius: .25rem 0 0 .25rem; }
@@ -10,7 +11,9 @@
 @endpush
 
 @section('content')
+    {{-- Awal konten halaman --}}
     <div class="container-fluid">
+        {{-- Kartu statistik --}}
         <div class="row g-3 mb-4">
             <div class="col-lg-2 col-4">
                 <div class="card">
@@ -62,6 +65,7 @@
             </div>
         </div>
 
+        {{-- Tombol export PDF --}}
         <div class="row g-3 mb-4">
             <div class="col-12">
                 <div class="card">
@@ -82,6 +86,7 @@
             </div>
         </div>
 
+        {{-- Tabel aktivitas quiz terbaru --}}
         <div class="row g-3 mb-4">
             <div class="col-12">
                 <div class="card">
@@ -137,6 +142,7 @@
             </div>
         </div>
 
+        {{-- Tabel progress seluruh siswa --}}
         <div class="row g-3 mb-4">
             <div class="col-12">
                 <div class="card">
@@ -178,6 +184,7 @@
             </div>
         </div>
 
+        {{-- Tabel materi paling banyak dikerjakan --}}
         <div class="row g-3 mb-4">
             <div class="col-12">
                 <div class="card">
@@ -214,6 +221,7 @@
             </div>
         </div>
     </div>
+    {{-- Inisialisasi DataTables --}}
     @push('scripts')
         <script>
             $(document).ready(function() {

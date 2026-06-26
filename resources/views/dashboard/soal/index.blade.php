@@ -3,7 +3,9 @@
 @section('title', 'Soal - ' . $quiz->judul)
 
 @section('content')
+    {{-- Awal konten halaman --}}
     <div class="container-fluid">
+        {{-- Notifikasi sukses --}}
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
@@ -11,10 +13,12 @@
             </div>
         @endif
 
+        {{-- Kartu daftar soal --}}
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title mb-0">Daftar Soal - {{ $quiz->judul }}</h5>
                 <div class="card-tools d-flex gap-2">
+                    {{-- Tombol aksi: tambah soal dan kembali --}}
                     <a href="{{ route('dashboard.quiz.soal.create', $quiz) }}" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-lg"></i> Tambah Soal
                     </a>
@@ -24,10 +28,12 @@
                 </div>
             </div>
             <div class="card-body p-0">
+                {{-- Looping soal quiz --}}
                 @forelse ($quiz->soal as $soal)
                     <div class="border-bottom p-3">
                         <div class="d-flex justify-content-between align-items-start mb-2">
                             <h6 class="mb-0">Soal {{ $loop->iteration }}</h6>
+                            {{-- Tombol aksi: edit, hapus soal --}}
                             <div class="d-flex gap-1">
                                 <a href="{{ route('dashboard.quiz.soal.edit', [$quiz, $soal]) }}"
                                     class="btn btn-sm btn-warning">
@@ -44,6 +50,7 @@
                             </div>
                         </div>
                         <p class="mb-2">{{ $soal->pertanyaan }}</p>
+                        {{-- Looping pilihan jawaban --}}
                         <div class="ms-3">
                             @foreach ($soal->pilihanJawaban as $pilihan)
                                 <div class="d-flex align-items-center gap-2 mb-1">
@@ -53,6 +60,7 @@
                                     <span class="{{ $pilihan->is_correct ? 'fw-bold text-success' : '' }}">
                                         {{ $pilihan->jawaban }}
                                     </span>
+                                    {{-- Indikator jawaban benar --}}
                                     @if ($pilihan->is_correct)
                                         <i class="bi bi-check-circle-fill text-success"></i>
                                     @endif
@@ -60,6 +68,7 @@
                             @endforeach
                         </div>
                     </div>
+                {{-- Kondisi jika belum ada soal --}}
                 @empty
                     <div class="text-center text-muted py-4">Belum ada soal</div>
                 @endforelse

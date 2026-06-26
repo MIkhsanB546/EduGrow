@@ -5,6 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
+/**
+ * FormRequest untuk validasi registrasi pengguna baru.
+ */
 class RegisterRequest extends FormRequest
 {
     public function authorize(): bool
@@ -12,6 +15,9 @@ class RegisterRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Aturan validasi untuk registrasi.
+     */
     public function rules(): array
     {
         return [
@@ -22,6 +28,9 @@ class RegisterRequest extends FormRequest
         ];
     }
 
+    /**
+     * Label atribut dalam Bahasa Indonesia.
+     */
     public function attributes(): array
     {
         return [

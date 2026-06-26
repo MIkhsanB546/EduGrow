@@ -10,8 +10,14 @@ use App\Models\Jenjang;
 use App\Models\KategoriMateri;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * Controller untuk mengelola data materi.
+ */
 class MateriController extends Controller
 {
+    /**
+     * Menampilkan daftar materi sesuai role pengguna.
+     */
     public function index()
     {
         $user = auth()->user();
@@ -28,6 +34,9 @@ class MateriController extends Controller
         return view('dashboard.materi.index', compact('materiList'));
     }
 
+    /**
+     * Menampilkan form tambah materi.
+     */
     public function create()
     {
         $jenjangList = Jenjang::all();
@@ -35,6 +44,9 @@ class MateriController extends Controller
         return view('dashboard.materi.create', compact('jenjangList', 'kategoriList'));
     }
 
+    /**
+     * Menyimpan materi baru beserta file dan thumbnail.
+     */
     public function store(StoreMateriRequest $request)
     {
         $data = $request->validated();
@@ -56,6 +68,9 @@ class MateriController extends Controller
             ->with('success', 'Materi berhasil dibuat.');
     }
 
+    /**
+     * Menampilkan detail materi.
+     */
     public function show(Materi $materi)
     {
         $this->authorize('view', $materi);
@@ -63,6 +78,9 @@ class MateriController extends Controller
         return view('dashboard.materi.show', compact('materi'));
     }
 
+    /**
+     * Menampilkan form edit materi.
+     */
     public function edit(Materi $materi)
     {
         $this->authorize('update', $materi);
@@ -71,12 +89,16 @@ class MateriController extends Controller
         return view('dashboard.materi.edit', compact('materi', 'jenjangList', 'kategoriList'));
     }
 
+    /**
+     * Memperbarui data materi termasuk file dan thumbnail.
+     */
     public function update(UpdateMateriRequest $request, Materi $materi)
     {
         $this->authorize('update', $materi);
 
         $data = $request->validated();
 
+        // Hapus file lama jika diganti
         if ($request->hasFile('file_materi')) {
             if ($materi->file_materi) {
                 Storage::disk('public')->delete($materi->file_materi);
@@ -84,6 +106,7 @@ class MateriController extends Controller
             $data['file_materi'] = $request->file('file_materi')->store('materi/files', 'public');
         }
 
+        // Hapus thumbnail lama jika diganti
         if ($request->hasFile('thumbnail')) {
             if ($materi->thumbnail) {
                 Storage::disk('public')->delete($materi->thumbnail);
@@ -99,6 +122,9 @@ class MateriController extends Controller
             ->with('success', 'Materi berhasil diperbarui.');
     }
 
+    /**
+     * Menghapus materi beserta file dan thumbnail.
+     */
     public function destroy(Materi $materi)
     {
         $this->authorize('delete', $materi);

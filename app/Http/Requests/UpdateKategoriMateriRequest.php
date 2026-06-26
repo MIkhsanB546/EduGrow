@@ -5,6 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/**
+ * FormRequest untuk validasi perubahan data kategori.
+ */
 class UpdateKategoriMateriRequest extends FormRequest
 {
     public function authorize(): bool
@@ -12,6 +15,9 @@ class UpdateKategoriMateriRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Aturan validasi untuk update kategori.
+     */
     public function rules(): array
     {
         return [
@@ -20,6 +26,9 @@ class UpdateKategoriMateriRequest extends FormRequest
         ];
     }
 
+    /**
+     * Label atribut dalam Bahasa Indonesia.
+     */
     public function attributes(): array
     {
         return [

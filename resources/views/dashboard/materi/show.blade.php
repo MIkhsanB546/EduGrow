@@ -3,8 +3,10 @@
 @section('title', $materi->judul)
 
 @section('content')
+{{-- Detail materi --}}
 <div class="container-fluid">
     <div class="card">
+        {{-- Header dengan tombol kembali --}}
         <div class="card-header d-flex align-items-center justify-content-between">
             <h5 class="card-title mb-0">Detail Materi</h5>
             <a href="{{ route('dashboard.materi.index') }}" class="btn btn-secondary">
@@ -13,6 +15,7 @@
         </div>
         <div class="card-body">
             <div class="row">
+                {{-- Informasi detail materi --}}
                 <div class="col-md-8">
                     <table class="table table-borderless">
                         <tr>
@@ -35,6 +38,7 @@
                             <th>Kategori</th>
                             <td>{{ $materi->kategori->nama_kategori ?? '-' }}</td>
                         </tr>
+                        {{-- Status publish/draft --}}
                         <tr>
                             <th>Status</th>
                             <td>
@@ -45,6 +49,7 @@
                                 @endif
                             </td>
                         </tr>
+                        {{-- Tombol download file materi --}}
                         @if ($materi->file_materi)
                         <tr>
                             <th>File Materi</th>
@@ -57,6 +62,7 @@
                         @endif
                     </table>
                 </div>
+                {{-- Thumbnail materi --}}
                 <div class="col-md-4">
                     @if ($materi->thumbnail)
                     <div class="text-center">
@@ -66,6 +72,7 @@
                 </div>
             </div>
 
+            {{-- Quiz terkait --}}
             @php $firstQuiz = $materi->quiz->first(); @endphp
             @if ($firstQuiz)
             <div class="mt-4">

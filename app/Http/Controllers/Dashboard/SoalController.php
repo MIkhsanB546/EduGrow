@@ -8,8 +8,14 @@ use App\Models\Soal;
 use App\Models\Quiz;
 use App\Models\PilihanJawaban;
 
+/**
+ * Controller untuk mengelola soal dalam quiz.
+ */
 class SoalController extends Controller
 {
+    /**
+     * Menampilkan daftar soal dalam quiz.
+     */
     public function index(Quiz $quiz)
     {
         $this->authorize('view', $quiz);
@@ -17,12 +23,18 @@ class SoalController extends Controller
         return view('dashboard.soal.index', compact('quiz'));
     }
 
+    /**
+     * Menampilkan form tambah soal.
+     */
     public function create(Quiz $quiz)
     {
         $this->authorize('update', $quiz);
         return view('dashboard.soal.create', compact('quiz'));
     }
 
+    /**
+     * Menyimpan soal beserta pilihan jawaban.
+     */
     public function store(StoreSoalRequest $request, Quiz $quiz)
     {
         $this->authorize('update', $quiz);
@@ -36,6 +48,7 @@ class SoalController extends Controller
 
         $jawabanBenarIndex = (int) $data['jawaban_benar'];
 
+        // Simpan setiap pilihan jawaban
         foreach ($data['pilihan_jawaban'] as $index => $pilihan) {
             PilihanJawaban::create([
                 'id_soal' => $soal->id_soal,
@@ -48,6 +61,9 @@ class SoalController extends Controller
             ->with('success', 'Soal berhasil ditambahkan.');
     }
 
+    /**
+     * Menampilkan form edit soal.
+     */
     public function edit(Quiz $quiz, Soal $soal)
     {
         $this->authorize('update', $quiz);
@@ -55,6 +71,9 @@ class SoalController extends Controller
         return view('dashboard.soal.edit', compact('quiz', 'soal'));
     }
 
+    /**
+     * Memperbarui soal dan pilihan jawaban.
+     */
     public function update(StoreSoalRequest $request, Quiz $quiz, Soal $soal)
     {
         $this->authorize('update', $quiz);
@@ -65,6 +84,7 @@ class SoalController extends Controller
             'pertanyaan' => $data['pertanyaan'],
         ]);
 
+        // Hapus pilihan lama dan buat baru
         $soal->pilihanJawaban()->delete();
 
         $jawabanBenarIndex = (int) $data['jawaban_benar'];
@@ -81,6 +101,9 @@ class SoalController extends Controller
             ->with('success', 'Soal berhasil diperbarui.');
     }
 
+    /**
+     * Menghapus soal.
+     */
     public function destroy(Quiz $quiz, Soal $soal)
     {
         $this->authorize('update', $quiz);

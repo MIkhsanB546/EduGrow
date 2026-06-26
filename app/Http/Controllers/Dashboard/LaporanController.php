@@ -10,8 +10,14 @@ use App\Models\QuizAttempt;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Controller untuk laporan dan ekspor PDF.
+ */
 class LaporanController extends Controller
 {
+    /**
+     * Menampilkan halaman laporan dengan statistik lengkap.
+     */
     public function index()
     {
         $totalGuru = User::guru()->count();
@@ -21,6 +27,7 @@ class LaporanController extends Controller
         $totalAttempts = QuizAttempt::count();
         $rataNilai = round(QuizAttempt::avg('skor_persen') ?? 0, 1);
 
+        // Materi dengan attempt terbanyak
         $topMateri = Materi::with('guru')
             ->select('materi.*')
             ->selectSub(function ($query) {
@@ -38,6 +45,7 @@ class LaporanController extends Controller
             ->take(10)
             ->get();
 
+        // Siswa dengan nilai terbaik
         $topSiswa = User::siswa()
             ->select('users.*')
             ->selectSub(function ($query) {
@@ -55,6 +63,7 @@ class LaporanController extends Controller
             ->take(5)
             ->get();
 
+        // Progress setiap siswa
         $siswaProgress = User::siswa()
             ->select('users.*')
             ->selectSub(function ($query) {
@@ -94,6 +103,9 @@ class LaporanController extends Controller
         ));
     }
 
+    /**
+     * Mengekspor laporan pengguna ke PDF.
+     */
     public function exportPenggunaPdf()
     {
         $users = User::orderBy('created_at')->get();
@@ -115,6 +127,9 @@ class LaporanController extends Controller
         ]);
     }
 
+    /**
+     * Mengekspor laporan materi ke PDF.
+     */
     public function exportMateriPdf()
     {
         $materiList = Materi::with(['guru', 'jenjang', 'kategori'])
@@ -138,6 +153,9 @@ class LaporanController extends Controller
         ]);
     }
 
+    /**
+     * Mengekspor laporan progress siswa ke PDF.
+     */
     public function exportProgressPdf()
     {
         $siswaProgress = User::siswa()

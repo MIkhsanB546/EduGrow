@@ -1,7 +1,9 @@
+{{-- Layout Halaman Siswa --}}
 <!doctype html>
 <html lang="id">
 
 <head>
+    {{-- Meta --}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'SIPINTER') - Siswa</title>
@@ -134,8 +136,10 @@
 </head>
 
 <body class="bg-gray-50 min-h-screen">
+    {{-- Navigasi --}}
     @include('student.components.navbar')
 
+    {{-- Notifikasi Sukses --}}
     @if (session('success'))
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
             <div class="bg-green-50 border-l-4 border-green-500 text-green-800 rounded-xl p-4 flex items-center gap-3 shadow-sm"
@@ -146,6 +150,7 @@
         </div>
     @endif
 
+    {{-- Notifikasi Error --}}
     @if (session('error'))
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
             <div class="bg-red-50 border-l-4 border-red-500 text-red-800 rounded-xl p-4 flex items-center gap-3 shadow-sm"
@@ -156,16 +161,19 @@
         </div>
     @endif
 
+    {{-- Konten Utama --}}
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         @yield('content')
     </main>
 
+    {{-- Footer --}}
     <footer class="bg-white border-t border-gray-200 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-400">
             &copy; {{ date('Y') }} SIPINTER. Semua Hak Dilindungi.
         </div>
     </footer>
 
+    {{-- Scripts --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     @stack('scripts')
 </body>

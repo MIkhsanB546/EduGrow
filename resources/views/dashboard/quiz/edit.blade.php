@@ -3,12 +3,15 @@
 @section('title', 'Edit Quiz')
 
 @section('content')
+{{-- Awal konten halaman --}}
 <div class="container-fluid">
+    {{-- Kartu form edit quiz --}}
     <div class="card">
         <div class="card-header">
             <h5 class="card-title mb-0">Edit Quiz</h5>
         </div>
         <div class="card-body">
+            {{-- Notifikasi error validasi --}}
             @if($errors->any())
             <div class="alert alert-danger">
                 <ul class="mb-0">
@@ -18,10 +21,12 @@
                 </ul>
             </div>
             @endif
+            {{-- Form edit quiz --}}
             <form action="{{ route('dashboard.quiz.update', $quiz) }}" method="post">
                 @csrf
                 @method('put')
 
+                {{-- Field: pilih materi --}}
                 <div class="mb-3">
                     <label for="id_materi" class="form-label">Materi</label>
                     <select name="id_materi" id="id_materi"
@@ -39,6 +44,7 @@
                     @enderror
                 </div>
 
+                {{-- Field: judul quiz --}}
                 <div class="mb-3">
                     <label for="judul" class="form-label">Judul</label>
                     <input type="text" name="judul" id="judul"
@@ -49,6 +55,7 @@
                     @enderror
                 </div>
 
+                {{-- Field: deskripsi quiz --}}
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" rows="3"
@@ -58,6 +65,7 @@
                     @enderror
                 </div>
 
+                {{-- Field: durasi pengerjaan --}}
                 <div class="mb-3">
                     <label for="durasi_menit" class="form-label">Durasi (menit)</label>
                     <input type="number" name="durasi_menit" id="durasi_menit"
@@ -68,6 +76,7 @@
                     @enderror
                 </div>
 
+                {{-- Tombol aksi: simpan perubahan dan batal --}}
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                     <a href="{{ route('dashboard.quiz.index') }}" class="btn btn-secondary">Batal</a>

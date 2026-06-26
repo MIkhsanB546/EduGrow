@@ -7,13 +7,22 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Controller untuk menampilkan form login dan memproses login.
+ */
 class LoginController extends Controller
 {
+    /**
+     * Menampilkan form login.
+     */
     public function create()
     {
         return view('auth.login');
     }
 
+    /**
+     * Memproses login dan mengarahkan sesuai role.
+     */
     public function store(LoginRequest $request)
     {
         $credentials = $request->validated();

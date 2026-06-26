@@ -7,8 +7,15 @@ use App\Models\QuizAttempt;
 use App\Models\Materi;
 use App\Models\Quiz;
 
+/**
+ * Controller untuk menampilkan hasil belajar siswa.
+ */
 class HasilSiswaController extends Controller
 {
+    /**
+     * Menampilkan daftar hasil quiz siswa.
+     * Guru hanya melihat hasil siswanya sendiri.
+     */
     public function index()
     {
         $user = auth()->user();
@@ -28,6 +35,7 @@ class HasilSiswaController extends Controller
                 ->get();
         }
 
+        // Kelompokkan attempt berdasarkan judul materi
         $grouped = $attempts->groupBy(fn($a) => $a->quiz->materi->judul ?? 'Tanpa Materi');
 
         return view('dashboard.hasil-siswa.index', compact('grouped', 'attempts'));

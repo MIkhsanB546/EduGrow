@@ -7,13 +7,22 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Controller untuk registrasi pengguna baru.
+ */
 class RegisterController extends Controller
 {
+    /**
+     * Menampilkan form registrasi.
+     */
     public function create()
     {
         return view('auth.register');
     }
 
+    /**
+     * Memproses registrasi dan login otomatis setelahnya.
+     */
     public function store(RegisterRequest $request)
     {
         $data = $request->validated();

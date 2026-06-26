@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Model pilihan jawaban pada setiap soal.
+ */
 class PilihanJawaban extends Model
 {
     use HasFactory;
@@ -19,6 +22,9 @@ class PilihanJawaban extends Model
         'is_correct'
     ];
 
+    /**
+     * Relasi ke soal tempat pilihan ini berada.
+     */
     public function soal()
     {
         return $this->belongsTo(
@@ -27,6 +33,9 @@ class PilihanJawaban extends Model
         );
     }
 
+    /**
+     * Relasi ke jawaban siswa yang memilih opsi ini.
+     */
     public function jawabanSiswa()
     {
         return $this->hasMany(

@@ -1,19 +1,24 @@
 @extends('layouts.student')
 
+{{-- Judul halaman --}}
 @section('title', 'Quiz Saya')
 
 @section('content')
+{{-- Header halaman --}}
 <div class="mb-8">
     <h1 class="text-3xl font-extrabold text-gray-900">Quiz Saya</h1>
     <p class="text-gray-500 mt-1 text-lg">Kerjakan quiz dan kumpulkan bintang sebanyak-banyaknya!</p>
 </div>
 
+{{-- Daftar quiz --}}
 @forelse ($quizList as $item)
+{{-- Kartu quiz --}}
 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 mb-4 group">
     <div class="p-6 flex items-center justify-between">
         <div class="flex-1">
             <h3 class="font-bold text-gray-900 text-lg group-hover:text-indigo-600 transition-colors">{{ $item->quiz->judul }}</h3>
             <p class="text-sm text-gray-500 mt-1">{{ $item->quiz->materi->judul ?? '-' }}</p>
+            {{-- Informasi durasi, jumlah soal, dan status --}}
             <div class="flex items-center gap-4 mt-3">
                 <span class="inline-flex items-center text-xs text-gray-500">
                     <i class="bi bi-clock me-1"></i> {{ $item->quiz->durasi_menit ?? 'Tidak terbatas' }} menit
@@ -29,6 +34,7 @@
             </div>
         </div>
         <div class="flex items-center gap-4">
+            {{-- Skor dan bintang terbaik --}}
             @if ($item->has_completed)
             <div class="text-right">
                 <div class="flex gap-0.5 mb-1">
@@ -41,6 +47,7 @@
                 </span>
             </div>
             @endif
+            {{-- Tombol mulai/kerjakan lagi quiz --}}
             <a href="{{ route('siswa.quiz.start', $item->quiz) }}"
                 class="inline-flex items-center px-5 py-2.5 {{ $item->has_completed ? 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100' : 'bg-indigo-600 text-white hover:bg-indigo-700' }} rounded-xl text-sm font-semibold transition-colors shadow-sm">
                 {{ $item->has_completed ? 'Kerjakan Lagi' : 'Mulai Quiz' }}
@@ -50,6 +57,7 @@
     </div>
 </div>
 @empty
+{{-- Tampilan ketika tidak ada quiz --}}
 <div class="text-center py-16">
     <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
         <i class="bi bi-pencil-square text-3xl text-gray-400"></i>

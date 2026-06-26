@@ -1,13 +1,16 @@
 @extends('layouts.student')
 
+{{-- Judul halaman dinamis dari quiz --}}
 @section('title', $quiz->judul)
 
 @section('content')
+{{-- Header quiz dan nomor attempt --}}
 <div class="mb-6">
     <h1 class="text-2xl font-extrabold text-gray-900">{{ $quiz->judul }}</h1>
     <p class="text-gray-500 mt-1">Attempt ke-{{ $attempt->attempt_ke }}</p>
 </div>
 
+{{-- Tampilkan error validasi --}}
 @if($errors->any())
 <div class="alert alert-danger mb-6">
     <ul class="mb-0">
@@ -18,11 +21,14 @@
 </div>
 @endif
 
+{{-- Form jawaban quiz --}}
 <form action="{{ route('siswa.quiz.submit', [$quiz, $attempt]) }}" method="post">
     @csrf
 
+    {{-- Daftar soal --}}
     <div class="space-y-6">
         @foreach ($quiz->soal as $index => $soal)
+        {{-- Kartu soal --}}
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-300"
             x-data="{ selected: null }">
             <div class="flex items-start gap-3 mb-4">
@@ -32,6 +38,7 @@
                 <p class="font-semibold text-gray-900 pt-1">{{ $soal->pertanyaan }}</p>
             </div>
 
+            {{-- Pilihan jawaban --}}
             <div class="space-y-2 ml-11">
                 @foreach ($soal->pilihanJawaban as $pilihan)
                 <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 cursor-pointer transition-all duration-200 hover:bg-indigo-50 hover:border-indigo-200"
@@ -50,6 +57,7 @@
         @endforeach
     </div>
 
+    {{-- Footer form dengan tombol kumpulkan --}}
     <div class="mt-8 flex items-center justify-between bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
         <p class="text-sm text-gray-500">
             <i class="bi bi-info-circle me-1"></i>
@@ -63,6 +71,7 @@
 </form>
 @endsection
 
+{{-- Alpine.js untuk interaktivitas pilihan jawaban --}}
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 @endpush

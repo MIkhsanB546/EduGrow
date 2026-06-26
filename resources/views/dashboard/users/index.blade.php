@@ -9,7 +9,9 @@
 @endpush
 
 @section('content')
+{{-- Konten daftar user --}}
 <div class="container-fluid">
+    {{-- Notifikasi sukses --}}
     @if (session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ session('success') }}
@@ -17,6 +19,7 @@
     </div>
     @endif
 
+    {{-- Notifikasi error --}}
     @if (session('error'))
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         {{ session('error') }}
@@ -24,7 +27,9 @@
     </div>
     @endif
 
+    {{-- Kartu daftar user --}}
     <div class="card">
+        {{-- Header kartu dengan tombol tambah --}}
         <div class="card-header">
             <h3 class="card-title">Daftar User</h3>
             <div class="card-tools">
@@ -34,6 +39,7 @@
             </div>
         </div>
         <div class="card-body">
+            {{-- Tabel daftar user --}}
             <table id="usersTable" class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -50,6 +56,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        {{-- Badge role dengan warna sesuai role --}}
                         <td>
                             @php
                             $badgeClass = match ($user->role) {
@@ -61,6 +68,7 @@
                             @endphp
                             <span class="badge {{ $badgeClass }}">{{ ucfirst($user->role) }}</span>
                         </td>
+                        {{-- Tombol aksi edit dan hapus --}}
                         <td>
                             <div class="btn-group btn-group-sm">
                                 <a href="{{ route('dashboard.users.edit', $user) }}" class="btn btn-warning" title="Edit">
@@ -78,6 +86,7 @@
                             </div>
                         </td>
                     </tr>
+                    {{-- State kosong --}}
                     @empty
                     <tr>
                         <td colspan="5" class="text-center text-muted py-4">Belum ada user</td>
@@ -88,6 +97,7 @@
         </div>
     </div>
 </div>
+{{-- Inisialisasi DataTable --}}
 @push('scripts')
 <script>
 $(document).ready(function() {

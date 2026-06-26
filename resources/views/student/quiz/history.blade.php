@@ -1,20 +1,25 @@
 @extends('layouts.student')
 
+{{-- Judul halaman --}}
 @section('title', 'Riwayat Quiz')
 
 @section('content')
+{{-- Header halaman --}}
 <div class="mb-8">
     <h1 class="text-3xl font-extrabold text-gray-900">Riwayat Quiz</h1>
     <p class="text-gray-500 mt-1 text-lg">Lihat kembali hasil quiz yang sudah kamu kerjakan</p>
 </div>
 
+{{-- Riwayat per grup quiz --}}
 @forelse ($attempts->groupBy(fn($a) => $a->quiz->judul) as $quizJudul => $group)
 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
+    {{-- Header grup quiz --}}
     <div class="px-6 py-4 bg-gray-50 border-b border-gray-100">
         <h3 class="font-bold text-gray-900">{{ $quizJudul }}</h3>
         <p class="text-xs text-gray-500">{{ $group->first()->quiz->materi->judul ?? '-' }}</p>
     </div>
     <div class="overflow-x-auto">
+        {{-- Tabel riwayat attempt --}}
         <table class="w-full">
             <thead>
                 <tr class="bg-gray-50 border-b border-gray-100">
@@ -46,6 +51,7 @@
                         </div>
                     </td>
                     <td class="px-5 py-3">
+                        {{-- Tombol detail attempt --}}
                         <a href="{{ route('siswa.quiz.result', [$attempt->quiz, $attempt]) }}"
                             class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
                             Detail
@@ -58,6 +64,7 @@
     </div>
 </div>
 @empty
+{{-- Tampilan ketika tidak ada riwayat --}}
 <div class="text-center py-16">
     <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
         <i class="bi bi-clock-history text-3xl text-gray-400"></i>

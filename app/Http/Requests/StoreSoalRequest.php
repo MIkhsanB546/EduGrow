@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * FormRequest untuk validasi penyimpanan soal baru.
+ */
 class StoreSoalRequest extends FormRequest
 {
     public function authorize(): bool
@@ -11,28 +14,35 @@ class StoreSoalRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Aturan validasi untuk soal baru.
+     */
     public function rules(): array
     {
         return [
             'pertanyaan' => ['required', 'string'],
             'pilihan_jawaban' => ['required', 'array', 'min:4'],
             'pilihan_jawaban.*.jawaban' => ['required', 'string'],
-            // 'pilihan_jawaban.*.is_correct' => ['required', 'boolean'],
             'jawaban_benar' => ['required', 'integer', 'min:0'],
         ];
     }
 
+    /**
+     * Label atribut dalam Bahasa Indonesia.
+     */
     public function attributes(): array
     {
         return [
             'pertanyaan' => 'Pertanyaan',
             'pilihan_jawaban' => 'Pilihan Jawaban',
             'pilihan_jawaban.*.jawaban' => 'Jawaban',
-            // 'pilihan_jawaban.*.is_correct' => 'Kunci Jawaban',
             'jawaban_benar' => 'Jawaban Benar',
         ];
     }
 
+    /**
+     * Validasi tambahan: memastikan indeks jawaban benar valid.
+     */
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {

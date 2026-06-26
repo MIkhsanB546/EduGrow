@@ -6,6 +6,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * Model pengguna (guru, siswa, admin).
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -31,21 +34,33 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Relasi ke materi yang dibuat oleh guru.
+     */
     public function materi()
     {
         return $this->hasMany(Materi::class, 'id_guru');
     }
 
+    /**
+     * Relasi ke percobaan quiz yang dilakukan siswa.
+     */
     public function quizAttempts()
     {
         return $this->hasMany(QuizAttempt::class, 'id_siswa');
     }
 
+    /**
+     * Scope untuk filter pengguna dengan role guru.
+     */
     public function scopeGuru($query)
     {
         return $query->where('role', 'guru');
     }
 
+    /**
+     * Scope untuk filter pengguna dengan role siswa.
+     */
     public function scopeSiswa($query)
     {
         return $query->where('role', 'siswa');

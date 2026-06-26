@@ -1,9 +1,11 @@
+{{-- Template PDF laporan progress siswa --}}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Laporan Progress Siswa</title>
     <style>
+        {{-- Style CSS untuk PDF --}}
         body { font-family: sans-serif; font-size: 12px; color: #333; }
         .header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #095890; padding-bottom: 15px; }
         .header img { height: 50px; width: auto; }
@@ -18,6 +20,7 @@
     </style>
 </head>
 <body>
+    {{-- Kop laporan: logo dan judul --}}
     <div class="header">
         @if ($logoBase64)
             <img src="data:image/png;base64,{{ $logoBase64 }}" alt="SIPINTER">
@@ -26,6 +29,7 @@
         <p>Tanggal Cetak: {{ \Carbon\Carbon::now()->translatedFormat('d F Y H:i') }}</p>
     </div>
 
+    {{-- Tabel data progress siswa --}}
     <table>
         <thead>
             <tr>
@@ -55,6 +59,7 @@
         </tbody>
     </table>
 
+    {{-- Footer laporan --}}
     <div class="footer">
         SIPINTER - Sistem Informasi Pembelajaran Interaktif &mdash; Dicetak pada {{ \Carbon\Carbon::now()->translatedFormat('d F Y H:i:s') }}
     </div>

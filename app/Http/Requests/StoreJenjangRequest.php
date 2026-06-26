@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * FormRequest untuk validasi penyimpanan jenjang baru.
+ */
 class StoreJenjangRequest extends FormRequest
 {
     public function authorize(): bool
@@ -11,6 +14,9 @@ class StoreJenjangRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Aturan validasi untuk jenjang baru.
+     */
     public function rules(): array
     {
         return [
@@ -18,6 +24,9 @@ class StoreJenjangRequest extends FormRequest
         ];
     }
 
+    /**
+     * Label atribut dalam Bahasa Indonesia.
+     */
     public function attributes(): array
     {
         return [

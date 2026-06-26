@@ -1,6 +1,8 @@
+{{-- Halaman Registrasi SIPINTER --}}
 <!doctype html>
 <html lang="id">
 <head>
+    {{-- Meta --}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Daftar — SIPINTER</title>
@@ -33,6 +35,7 @@
         <div class="row justify-content-center">
             <div class="col-11 col-sm-10 col-md-6 col-lg-4">
 
+                {{-- Header: Logo, Nama Aplikasi, dan Tagline --}}
                 <div class="text-center mb-4">
                     <img src="{{ asset('images/sipinter-logo.png') }}" alt="SIPINTER" height="100">
                     <h1 class="mt-3 fw-bold" style="color: #095890;">SIPINTER</h1>
@@ -42,6 +45,7 @@
                 <div class="card border-0 shadow rounded-4" style="background-color: #FFFFFF;">
                     <div class="card-body p-4">
 
+                        {{-- Notifikasi error validasi --}}
                         @if ($errors->any())
                             <div class="alert alert-danger rounded-3 py-2 ps-3 pe-2 mb-3" role="alert">
                                 <ul class="mb-0 ps-3">
@@ -52,9 +56,11 @@
                             </div>
                         @endif
 
+                        {{-- Form Registrasi --}}
                         <form action="{{ route('register') }}" method="post">
                             @csrf
 
+                            {{-- Field Nama Lengkap --}}
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-white border-end-0 rounded-start-4" style="border-color: #DDE7EF;">
                                     <i class="bi bi-person" style="color: #095890;"></i>
@@ -70,6 +76,7 @@
                                 @enderror
                             </div>
 
+                            {{-- Field Email --}}
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-white border-end-0 rounded-start-4" style="border-color: #DDE7EF;">
                                     <i class="bi bi-envelope" style="color: #095890;"></i>
@@ -85,6 +92,7 @@
                                 @enderror
                             </div>
 
+                            {{-- Field Password --}}
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-white border-end-0 rounded-start-4" style="border-color: #DDE7EF;">
                                     <i class="bi bi-lock-fill" style="color: #095890;"></i>
@@ -100,6 +108,7 @@
                                 @enderror
                             </div>
 
+                            {{-- Field Konfirmasi Password --}}
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-white border-end-0 rounded-start-4" style="border-color: #DDE7EF;">
                                     <i class="bi bi-lock" style="color: #095890;"></i>
@@ -112,6 +121,7 @@
                                 </div>
                             </div>
 
+                            {{-- Field Pilih Role (Guru/Siswa) --}}
                             <div class="input-group mb-4">
                                 <span class="input-group-text bg-white border-end-0 rounded-start-4" style="border-color: #DDE7EF;">
                                     <i class="bi bi-person-badge" style="color: #095890;"></i>
@@ -130,11 +140,13 @@
                                 @enderror
                             </div>
 
+                            {{-- Tombol Submit --}}
                             <button type="submit" class="btn-si-primary btn w-100 rounded-pill py-2 fw-semibold border-0">
                                 Daftar
                             </button>
                         </form>
 
+                        {{-- Link ke halaman Login --}}
                         <p class="text-center mt-4 mb-0" style="color: #64748B;">
                             Sudah punya akun?
                             <a href="{{ route('login') }}" class="fw-semibold text-decoration-none" style="color: #095890;">Masuk</a>
@@ -143,12 +155,14 @@
                     </div>
                 </div>
 
+                {{-- Footer --}}
                 <p class="text-center small mt-4" style="color: #64748B;">&copy; 2026 SIPINTER</p>
 
             </div>
         </div>
     </div>
 
+    {{-- Scripts --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     @stack('scripts')
 </body>

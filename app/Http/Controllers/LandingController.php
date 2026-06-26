@@ -6,8 +6,15 @@ use App\Models\Materi;
 use App\Models\Quiz;
 use App\Models\User;
 
+/**
+ * Controller untuk halaman landing (beranda publik).
+ */
 class LandingController extends Controller
 {
+    /**
+     * Menampilkan halaman beranda dengan statistik umum.
+     * Jika sudah login, redirect ke dashboard sesuai role.
+     */
     public function index()
     {
         if (auth()->check()) {

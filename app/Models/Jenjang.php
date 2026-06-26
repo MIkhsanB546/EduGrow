@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Model jenjang pendidikan (SD, SMP, SMA).
+ */
 class Jenjang extends Model
 {
     use HasFactory;
@@ -17,6 +20,9 @@ class Jenjang extends Model
         'nama_jenjang'
     ];
 
+    /**
+     * Relasi ke materi yang termasuk dalam jenjang ini.
+     */
     public function materi()
     {
         return $this->hasMany(Materi::class, 'id_jenjang');

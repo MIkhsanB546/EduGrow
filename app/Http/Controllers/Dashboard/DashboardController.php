@@ -8,8 +8,15 @@ use App\Models\Quiz;
 use App\Models\User;
 use App\Models\QuizAttempt;
 
+/**
+ * Controller untuk dashboard admin dan guru.
+ */
 class DashboardController extends Controller
 {
+    /**
+     * Menampilkan dashboard dengan statistik sesuai role.
+     * Guru melihat data materinya sendiri, admin melihat seluruh data.
+     */
     public function index()
     {
         $user = auth()->user();
@@ -41,6 +48,7 @@ class DashboardController extends Controller
             ));
         }
 
+        // Data untuk admin
         $jumlahMateri = Materi::count();
         $jumlahQuiz = Quiz::count();
         $jumlahSiswa = User::siswa()->count();

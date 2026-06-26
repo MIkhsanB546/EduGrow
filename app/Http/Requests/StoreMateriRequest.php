@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * FormRequest untuk validasi penyimpanan materi baru.
+ */
 class StoreMateriRequest extends FormRequest
 {
     public function authorize(): bool
@@ -11,6 +14,9 @@ class StoreMateriRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Aturan validasi untuk materi baru.
+     */
     public function rules(): array
     {
         return [
@@ -24,6 +30,9 @@ class StoreMateriRequest extends FormRequest
         ];
     }
 
+    /**
+     * Label atribut dalam Bahasa Indonesia.
+     */
     public function attributes(): array
     {
         return [

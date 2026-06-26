@@ -1,16 +1,20 @@
 @extends('layouts.student')
 
+{{-- Judul halaman --}}
 @section('title', 'Hasil Quiz')
 
 @section('content')
 <div class="max-w-3xl mx-auto">
+    {{-- Header hasil quiz --}}
     <div class="text-center mb-8">
         <h1 class="text-3xl font-extrabold text-gray-900">{{ $quiz->judul }}</h1>
         <p class="text-gray-500 mt-1">Attempt ke-{{ $attempt->attempt_ke }}</p>
     </div>
 
+    {{-- Kartu skor --}}
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
         <div class="p-8 text-center">
+            {{-- Lingkaran persentase skor --}}
             <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center
                 {{ $attempt->skor_persen >= 80 ? 'bg-emerald-50' : ($attempt->skor_persen >= 60 ? 'bg-amber-50' : ($attempt->skor_persen >= 40 ? 'bg-orange-50' : 'bg-red-50')) }}">
                 <span class="text-4xl font-black
@@ -19,6 +23,7 @@
                 </span>
             </div>
 
+            {{-- Pesan berdasarkan rentang skor --}}
             <h2 class="text-2xl font-extrabold text-gray-900 mb-2">
                 @if ($attempt->skor_persen >= 80)
                 🎉 Luar Biasa!
@@ -31,12 +36,14 @@
                 @endif
             </h2>
 
+            {{-- Bintang yang diperoleh --}}
             <div class="flex items-center justify-center gap-1 mb-4">
                 @for ($i = 1; $i <= 3; $i++)
                     <i class="bi bi-star{{ $i <= $attempt->bintang ? '-fill text-amber-400' : ' text-gray-200' }} text-2xl"></i>
                 @endfor
             </div>
 
+            {{-- Statistik benar/salah --}}
             <div class="flex justify-center gap-8 text-sm">
                 <div>
                     <span class="text-gray-500">Benar</span>
@@ -50,10 +57,12 @@
         </div>
     </div>
 
+    {{-- Detail jawaban per soal --}}
     <div class="space-y-4 mb-8">
         <h3 class="font-bold text-gray-900 text-lg">Detail Jawaban</h3>
 
         @foreach ($attempt->jawabanSiswa as $index => $jawaban)
+        {{-- Kartu detail jawaban --}}
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div class="p-5">
                 <div class="flex items-start gap-3 mb-3">
@@ -83,6 +92,7 @@
         @endforeach
     </div>
 
+    {{-- Tombol aksi --}}
     <div class="flex justify-center gap-4">
         <a href="{{ route('siswa.quiz.start', $quiz) }}"
             class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-xl text-sm font-bold hover:bg-indigo-700 transition-colors shadow-sm">

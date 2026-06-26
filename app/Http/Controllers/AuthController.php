@@ -6,8 +6,15 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Controller untuk autentikasi pengguna (login & logout).
+ */
 class AuthController extends Controller
 {
+    /**
+     * Memproses login pengguna.
+     * Mengarahkan ke dashboard atau halaman siswa sesuai role.
+     */
     public function login(LoginRequest $request)
     {
         $credentials = $request->validated();
@@ -29,6 +36,9 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
+    /**
+     * Memproses logout dan invalidasi session.
+     */
     public function logout(Request $request)
     {
         Auth::logout();

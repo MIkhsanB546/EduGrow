@@ -9,10 +9,13 @@
 @endpush
 
 @section('content')
+{{-- Konten daftar jenjang --}}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
+            {{-- Kartu daftar jenjang --}}
             <div class="card">
+                {{-- Header kartu dengan tombol tambah --}}
                 <div class="card-header">
                     <h3 class="card-title">Daftar Jenjang</h3>
                     <div class="card-tools">
@@ -22,6 +25,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    {{-- Tabel daftar jenjang --}}
                     <table id="jenjangTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -37,6 +41,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $jenjang->nama_jenjang }}</td>
                                 <td>{{ $jenjang->materi_count ?? $jenjang->materi->count() }}</td>
+                                {{-- Tombol aksi edit dan hapus --}}
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('dashboard.jenjang.edit', $jenjang->id_jenjang) }}" class="btn btn-warning" title="Edit">
@@ -52,6 +57,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            {{-- State kosong --}}
                             @empty
                             <tr>
                                 <td colspan="4" class="text-center text-muted py-3">Belum ada jenjang</td>
@@ -64,6 +70,7 @@
         </div>
     </div>
 </div>
+{{-- Inisialisasi DataTable --}}
 @push('scripts')
 <script>
 $(document).ready(function() {

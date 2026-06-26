@@ -9,10 +9,13 @@
 @endpush
 
 @section('content')
+{{-- Konten daftar kategori --}}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
+            {{-- Kartu daftar kategori --}}
             <div class="card">
+                {{-- Header kartu dengan tombol tambah --}}
                 <div class="card-header">
                     <h3 class="card-title">Daftar Kategori Materi</h3>
                     <div class="card-tools">
@@ -22,6 +25,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    {{-- Tabel daftar kategori --}}
                     <table id="kategoriTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -39,6 +43,7 @@
                                 <td>{{ $kategori->nama_kategori }}</td>
                                 <td>{{ $kategori->deskripsi ?? '-' }}</td>
                                 <td>{{ $kategori->materi_count ?? $kategori->materi->count() }}</td>
+                                {{-- Tombol aksi edit dan hapus --}}
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('dashboard.kategori.edit', $kategori->id_kategori_materi) }}" class="btn btn-warning" title="Edit">
@@ -54,6 +59,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            {{-- State kosong --}}
                             @empty
                             <tr>
                                 <td colspan="5" class="text-center text-muted py-3">Belum ada kategori</td>
@@ -66,6 +72,7 @@
         </div>
     </div>
 </div>
+{{-- Inisialisasi DataTable --}}
 @push('scripts')
 <script>
 $(document).ready(function() {
