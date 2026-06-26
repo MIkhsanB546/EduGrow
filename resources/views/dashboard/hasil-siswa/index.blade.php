@@ -10,7 +10,7 @@
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover mb-0">
+                        <table id="hasilSiswaTable" class="table table-hover mb-0">
                     <thead class="table-light">
                         <tr>
                             <th>No</th>
@@ -56,4 +56,15 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script>
+$(document).ready(function() {
+    $('#hasilSiswaTable').DataTable({
+        responsive: true,
+        pageLength: 10,
+        language: { url: '//cdn.datatables.net/plug-ins/1.13.11/i18n/id.json' }
+    });
+});
+</script>
+@endpush
 @endsection

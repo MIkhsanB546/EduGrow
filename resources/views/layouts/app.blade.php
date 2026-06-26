@@ -82,6 +82,12 @@
         a.text-si-primary:hover { color: var(--si-primary-hover) !important; }
         .sidebar-brand-logo { display: flex; align-items: center; gap: 0.5rem; }
     </style>
+
+    <!--begin::Third Party Plugin(DataTables)-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.11/css/dataTables.bootstrap5.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" crossorigin="anonymous" />
+    <!--end::Third Party Plugin(DataTables)-->
+
     @stack('styles')
 </head>
 <!--end::Head-->
@@ -426,6 +432,13 @@
 
     <!-- OPTIONAL SCRIPTS -->
 
+    <!--begin::Third Party Plugin(DataTables)-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.11/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.11/js/dataTables.bootstrap5.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js" crossorigin="anonymous"></script>
+    <!--end::Third Party Plugin(DataTables)-->
 
     <!--end::Script-->
 
