@@ -2,57 +2,63 @@
 
 @section('title', 'Kelola Jenjang')
 
+@push('styles')
+<style>
+.dataTables_filter input { width: 220px; }
+</style>
+@endpush
+
 @section('content')
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Daftar Jenjang</h5>
+                    <h3 class="card-title">Daftar Jenjang</h3>
                     <div class="card-tools">
                         <a href="{{ route('dashboard.jenjang.create') }}" class="btn btn-primary btn-sm">
                             <i class="bi bi-plus-lg"></i> Tambah Jenjang
                         </a>
                     </div>
                 </div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table id="jenjangTable" class="table table-hover mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Jenjang</th>
-                                    <th>Jumlah Materi</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($jenjangList as $jenjang)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $jenjang->nama_jenjang }}</td>
-                                    <td>{{ $jenjang->materi_count ?? $jenjang->materi->count() }}</td>
-                                    <td class="text-nowrap">
-                                        <a href="{{ route('dashboard.jenjang.edit', $jenjang->id_jenjang) }}" class="btn btn-sm btn-warning">
-                                            <i class="bi bi-pencil"></i> Edit
+                <div class="card-body">
+                    <table id="jenjangTable" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Jenjang</th>
+                                <th>Jumlah Materi</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($jenjangList as $jenjang)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $jenjang->nama_jenjang }}</td>
+                                <td>{{ $jenjang->materi_count ?? $jenjang->materi->count() }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="{{ route('dashboard.jenjang.edit', $jenjang->id_jenjang) }}" class="btn btn-warning" title="Edit">
+                                            <i class="bi bi-pencil"></i>
                                         </a>
                                         <form action="{{ route('dashboard.jenjang.destroy', $jenjang->id_jenjang) }}" method="post" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus jenjang ini?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                                <i class="bi bi-trash"></i> Hapus
+                                            <button type="submit" class="btn btn-danger" title="Hapus">
+                                                <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
-                                    </td>
-                                </tr>
-                                @empty
-                                <tr>
-                                    <td colspan="4" class="text-center text-muted py-3">Belum ada jenjang</td>
-                                </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="4" class="text-center text-muted py-3">Belum ada jenjang</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -62,7 +68,12 @@
 <script>
 $(document).ready(function() {
     $('#jenjangTable').DataTable({
+        paging: true,
+        searching: true,
+        ordering: true,
         responsive: true,
+        lengthChange: true,
+        autoWidth: false,
         pageLength: 10,
         language: { url: '//cdn.datatables.net/plug-ins/1.13.11/i18n/id.json' },
         columnDefs: [{ orderable: false, targets: 3 }]
