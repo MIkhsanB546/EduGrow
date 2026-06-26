@@ -17,7 +17,7 @@ class StoreSoalRequest extends FormRequest
             'pertanyaan' => ['required', 'string'],
             'pilihan_jawaban' => ['required', 'array', 'min:4'],
             'pilihan_jawaban.*.jawaban' => ['required', 'string'],
-            'pilihan_jawaban.*.is_correct' => ['required', 'boolean'],
+            // 'pilihan_jawaban.*.is_correct' => ['required', 'boolean'],
             'jawaban_benar' => ['required', 'integer', 'min:0'],
         ];
     }
@@ -28,7 +28,7 @@ class StoreSoalRequest extends FormRequest
             'pertanyaan' => 'Pertanyaan',
             'pilihan_jawaban' => 'Pilihan Jawaban',
             'pilihan_jawaban.*.jawaban' => 'Jawaban',
-            'pilihan_jawaban.*.is_correct' => 'Kunci Jawaban',
+            // 'pilihan_jawaban.*.is_correct' => 'Kunci Jawaban',
             'jawaban_benar' => 'Jawaban Benar',
         ];
     }
