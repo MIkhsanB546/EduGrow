@@ -204,11 +204,7 @@
                             <!--begin::Menu Footer-->
                             <li class="user-footer">
                                 <a href="{{ route('dashboard.profile') }}" class="btn btn-outline-secondary">
-                                    <i class="bi bi-person me-1"></i> Lihat Profil
-                                </a>
-                                <a href="{{ route('dashboard.profile') }}"
-                                    class="btn btn-outline-secondary float-end">
-                                    <i class="bi bi-gear me-1"></i> Pengaturan Profil
+                                    <i class="bi bi-person me-1"></i> Profil
                                 </a>
                             </li>
                             <li class="user-footer border-top" style="border-color: #DDE7EF !important;">
