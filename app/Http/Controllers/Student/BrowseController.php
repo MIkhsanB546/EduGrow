@@ -148,8 +148,7 @@ class BrowseController extends Controller
             ->where('id_guru', $guru->id_user)
             ->with(['tingkatKesulitan', 'kategori'])
             ->latest()
-            ->take(6)
-            ->get();
+            ->paginate(12);
 
         $totalMateri = Materi::where('id_guru', $guru->id_user)->where('is_published', true)->count();
 
