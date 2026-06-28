@@ -3,9 +3,11 @@
 @section('title', 'Kelola Quiz')
 
 @push('styles')
-<style>
-.dataTables_filter input { width: 220px; }
-</style>
+    <style>
+        .dataTables_filter input {
+            width: 220px;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -54,10 +56,12 @@
                                 <td>
                                     {{-- Tombol aksi: lihat, edit, hapus --}}
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('dashboard.quiz.show', $quiz) }}" class="btn btn-info" title="Lihat">
+                                        <a href="{{ route('dashboard.quiz.show', $quiz) }}" class="btn btn-info"
+                                            title="Lihat">
                                             <i class="bi bi-eye"></i>
                                         </a>
-                                        <a href="{{ route('dashboard.quiz.edit', $quiz) }}" class="btn btn-warning" title="Edit">
+                                        <a href="{{ route('dashboard.quiz.edit', $quiz) }}" class="btn btn-warning"
+                                            title="Edit">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                         <form action="{{ route('dashboard.quiz.destroy', $quiz) }}" method="post"
@@ -71,7 +75,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        {{-- Kondisi jika data kosong --}}
+                            {{-- Kondisi jika data kosong --}}
                         @empty
                             <tr>
                                 <td colspan="6" class="text-center text-muted py-4">Belum ada quiz</td>
@@ -95,7 +99,7 @@
                     autoWidth: false,
                     pageLength: 10,
                     language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.11/i18n/id.json'
+                        url: '{{ asset('vendor/datatables/i18n/id.json') }}'
                     },
                     columnDefs: [{
                         orderable: false,

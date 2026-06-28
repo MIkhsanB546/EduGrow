@@ -6,79 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Scan QR — SIPINTER</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-        crossorigin="anonymous">
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" crossorigin="anonymous">
     </script>
-    <style>
-        :root {
-            --si-primary: #095890;
-            --si-primary-hover: #0A6AAE;
-            --si-light-bg: #F5F9FC;
-            --si-border: #DDE7EF;
-            --si-text-dark: #1E293B;
-            --si-muted: #64748B;
-        }
-        .text-si-primary { color: var(--si-primary) !important; }
-        .bg-si-primary { background-color: var(--si-primary) !important; }
-        .btn-si-primary {
-            color: #fff;
-            background-color: var(--si-primary);
-            border-color: var(--si-primary);
-        }
-        .btn-si-primary:hover {
-            color: #fff;
-            background-color: var(--si-primary-hover);
-            border-color: var(--si-primary-hover);
-        }
-        #qr-reader {
-            border: none !important;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        #qr-reader video {
-            border-radius: 12px;
-        }
-        #qr-reader__scan_region {
-            min-height: 280px;
-        }
-        #qr-reader__dashboard_section_csr span {
-            margin: 0 auto;
-        }
-        #qr-reader__dashboard_section_csr button {
-            background-color: var(--si-primary) !important;
-            border-color: var(--si-primary) !important;
-            border-radius: 999px !important;
-            padding: 6px 20px !important;
-            color: #fff !important;
-            font-size: 0.875rem !important;
-        }
-        #qr-reader__dashboard_section_csr button:hover {
-            background-color: var(--si-primary-hover) !important;
-        }
-        #qr-reader__status_span {
-            font-size: 0.8rem;
-            color: var(--si-muted);
-        }
-        #qr-reader__dashboard_section {
-            padding: 0;
-        }
-        #qr-reader__dashboard_section_csr {
-            text-align: center;
-            padding: 8px 0;
-        }
-        #qr-reader__file_selection_input {
-            display: none;
-        }
-        #qr-reader__dashboard_section_csr span:first-child {
-            display: none;
-        }
-        #qr-reader__dashboard_section_csr a {
-            display: none !important;
-        }
-    </style>
+    @vite(['resources/css/auth.css', 'resources/js/auth.js'])
     @stack('styles')
 </head>
 
@@ -181,8 +111,6 @@
         });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
     @stack('scripts')
 </body>
 

@@ -5,6 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>@yield('title', 'SIPINTER')</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/sipinter-icon.ico') }}">
 
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -296,21 +297,23 @@
     <!--begin::jQuery Stub until Vite admin.js loads-->
     <script>
         window._$q = [];
-        window.$ = window.jQuery = function (s) {
+        window.$ = window.jQuery = function(s) {
             if (typeof s === 'function') {
                 window._$q.push(s);
                 return document;
             }
             return {
-                ready: function (fn) {
+                ready: function(fn) {
                     window._$q.push(fn);
                     return this;
                 },
-                DataTable: function () { return null; },
+                DataTable: function() {
+                    return null;
+                },
             };
         };
         window.jQuery.fn = {};
-        window.jQuery.ready = function (fn) {
+        window.jQuery.ready = function(fn) {
             window._$q.push(fn);
         };
     </script>

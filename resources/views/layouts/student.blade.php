@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'SIPINTER') - Siswa</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/sipinter-icon.ico') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         :root {

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Style Guide — SIPINTER</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
+    @vite(['resources/css/auth.css', 'resources/js/auth.js'])
     <style>
         :root {
             --si-primary: #095890;
@@ -604,8 +604,7 @@
         &copy; {{ date('Y') }} SIPINTER — Admin Dashboard Design System
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

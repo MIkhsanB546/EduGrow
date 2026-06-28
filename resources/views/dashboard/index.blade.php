@@ -281,18 +281,18 @@ $(document).ready(function() {
     $('#latestMateriTable').DataTable({
         responsive: true,
         pageLength: 5,
-        language: { url: '//cdn.datatables.net/plug-ins/1.13.11/i18n/id.json' }
+        language: { url: '{{ asset('vendor/datatables/i18n/id.json') }}' }
     });
     $('#latestQuizTable').DataTable({
         responsive: true,
         pageLength: 5,
-        language: { url: '//cdn.datatables.net/plug-ins/1.13.11/i18n/id.json' }
+        language: { url: '{{ asset('vendor/datatables/i18n/id.json') }}' }
     });
     @if (isset($recentAttempts) && $recentAttempts->isNotEmpty())
     $('#recentAttemptsTable').DataTable({
         responsive: true,
         pageLength: 5,
-        language: { url: '//cdn.datatables.net/plug-ins/1.13.11/i18n/id.json' }
+        language: { url: '{{ asset('vendor/datatables/i18n/id.json') }}' }
     });
     @endif
 });

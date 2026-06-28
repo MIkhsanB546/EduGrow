@@ -3,11 +3,16 @@
 @section('title', 'Laporan')
 
 @push('styles')
-{{-- Style tambahan --}}
-<style>
-    .small-box { border-radius: .25rem; }
-    .info-box-icon { border-radius: .25rem 0 0 .25rem; }
-</style>
+    {{-- Style tambahan --}}
+    <style>
+        .small-box {
+            border-radius: .25rem;
+        }
+
+        .info-box-icon {
+            border-radius: .25rem 0 0 .25rem;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -234,7 +239,7 @@
                     autoWidth: false,
                     pageLength: 10,
                     language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.11/i18n/id.json'
+                        url: '{{ asset('vendor/datatables/i18n/id.json') }}'
                     }
                 });
                 $('#aktivitasQuizTable').DataTable({
@@ -246,7 +251,7 @@
                     autoWidth: false,
                     pageLength: 10,
                     language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.11/i18n/id.json'
+                        url: '{{ asset('vendor/datatables/i18n/id.json') }}'
                     },
                     columnDefs: [{
                         orderable: false,
@@ -262,7 +267,7 @@
                     autoWidth: false,
                     pageLength: 10,
                     language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.11/i18n/id.json'
+                        url: '{{ asset('vendor/datatables/i18n/id.json') }}'
                     }
                 });
             });

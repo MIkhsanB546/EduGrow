@@ -7,71 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Masuk — SIPINTER</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-        crossorigin="anonymous">
-    <style>
-        :root {
-            --si-primary: #095890;
-            --si-primary-hover: #0A6AAE;
-            --si-light-bg: #F5F9FC;
-            --si-border: #DDE7EF;
-            --si-text-dark: #1E293B;
-            --si-muted: #64748B;
-        }
-
-        .text-si-primary {
-            color: var(--si-primary) !important;
-        }
-
-        .bg-si-primary {
-            background-color: var(--si-primary) !important;
-        }
-
-        .border-si-primary {
-            border-color: var(--si-primary) !important;
-        }
-
-        .btn-si-primary {
-            color: #fff;
-            background-color: var(--si-primary);
-            border-color: var(--si-primary);
-        }
-
-        .btn-si-primary:hover {
-            color: #fff;
-            background-color: var(--si-primary-hover);
-            border-color: var(--si-primary-hover);
-        }
-
-        a.text-si-primary:hover {
-            color: var(--si-primary-hover) !important;
-        }
-
-        .password-toggle {
-            position: absolute;
-            top: 50%;
-            right: 0.75rem;
-            transform: translateY(-50%);
-            border: none;
-            background: none;
-            padding: 0.25rem;
-            cursor: pointer;
-            z-index: 5;
-            line-height: 1;
-            color: #6c757d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .password-toggle:hover {
-            color: #495057;
-        }
-        .password-toggle:focus {
-            outline: none;
-        }
-    </style>
+    @vite(['resources/css/auth.css', 'resources/js/auth.js'])
     @stack('styles')
 </head>
 
@@ -193,9 +129,6 @@
     </div>
 
     {{-- Scripts --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
-    <script src="{{ asset('js/password-toggle.js') }}"></script>
     @stack('scripts')
 </body>
 
