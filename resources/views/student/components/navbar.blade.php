@@ -33,6 +33,22 @@
                    {{ request()->routeIs('siswa.quiz.history') ? 'nav-link-active' : 'text-gray-700 nav-link-inactive' }}">
                     <i class="bi bi-clock-history me-1"></i>Riwayat Quiz
                 </a>
+                @php
+                    $pendingCount = auth()->check()
+                        ? \App\Models\ParentStudentRequest::where('id_siswa', auth()->id())
+                            ->where('status', 'pending')
+                            ->count()
+                        : 0;
+                @endphp
+                <a href="{{ route('siswa.parent-requests') }}"
+                    class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150
+                   {{ request()->routeIs('siswa.parent-requests*') ? 'nav-link-active' : 'text-gray-700 nav-link-inactive' }}">
+                    <i class="bi bi-people me-1"></i>Permintaan
+                    @if ($pendingCount > 0)
+                        <span class="inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white rounded-full"
+                            style="background-color: #DC2626;">{{ $pendingCount }}</span>
+                    @endif
+                </a>
             </div>
 
             <div class="hidden lg:flex items-center">
@@ -106,6 +122,15 @@
                 class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150
                {{ request()->routeIs('siswa.quiz.history') ? 'nav-link-active' : 'text-gray-700 nav-link-inactive' }}">
                 <i class="bi bi-clock-history"></i>Riwayat Quiz
+            </a>
+            <a href="{{ route('siswa.parent-requests') }}"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150
+               {{ request()->routeIs('siswa.parent-requests*') ? 'nav-link-active' : 'text-gray-700 nav-link-inactive' }}">
+                <i class="bi bi-people"></i>Permintaan
+                @if ($pendingCount > 0)
+                    <span class="inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white rounded-full"
+                        style="background-color: #DC2626;">{{ $pendingCount }}</span>
+                @endif
             </a>
 
             <hr style="border-color: #DDE7EF;">

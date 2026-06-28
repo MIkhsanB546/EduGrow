@@ -17,6 +17,11 @@
                    {{ request()->routeIs('orang-tua.dashboard') ? 'nav-link-active' : 'text-gray-700 nav-link-inactive' }}">
                     <i class="bi bi-grid-fill me-1"></i>Dashboard
                 </a>
+                <a href="{{ route('orang-tua.students') }}"
+                    class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150
+                   {{ request()->routeIs('orang-tua.students*') ? 'nav-link-active' : 'text-gray-700 nav-link-inactive' }}">
+                    <i class="bi bi-people me-1"></i>Anak Saya
+                </a>
             </div>
 
             <div class="hidden lg:flex items-center">
@@ -75,6 +80,11 @@
                 class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150
                {{ request()->routeIs('orang-tua.dashboard') ? 'nav-link-active' : 'text-gray-700 nav-link-inactive' }}">
                 <i class="bi bi-grid-fill"></i>Dashboard
+            </a>
+            <a href="{{ route('orang-tua.students') }}"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150
+               {{ request()->routeIs('orang-tua.students*') ? 'nav-link-active' : 'text-gray-700 nav-link-inactive' }}">
+                <i class="bi bi-people"></i>Anak Saya
             </a>
 
             <hr style="border-color: #DDE7EF;">

@@ -21,6 +21,8 @@ use App\Http\Controllers\Student\BrowseController;
 use App\Http\Controllers\Student\MyLearningController;
 use App\Http\Controllers\Student\QuizController as StudentQuizController;
 use App\Http\Controllers\OrangTua\DashboardController as OrangTuaDashboardController;
+use App\Http\Controllers\OrangTua\StudentConnectionController;
+use App\Http\Controllers\Student\ParentRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\StyleGuideController;
@@ -126,6 +128,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.delete');
+
+        Route::get('/parent-requests', [ParentRequestController::class, 'index'])->name('parent-requests');
+        Route::post('/parent-requests/{request}/accept', [ParentRequestController::class, 'accept'])->name('parent-requests.accept');
+        Route::post('/parent-requests/{request}/reject', [ParentRequestController::class, 'reject'])->name('parent-requests.reject');
     });
 
     // ============================================================
@@ -137,6 +143,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.delete');
+
+        Route::get('/students', [StudentConnectionController::class, 'index'])->name('students');
+        Route::get('/students/create', [StudentConnectionController::class, 'create'])->name('students.create');
+        Route::post('/students', [StudentConnectionController::class, 'store'])->name('students.store');
+        Route::delete('/students/{student}', [StudentConnectionController::class, 'destroy'])->name('students.destroy');
     });
 
     // ============================================================
