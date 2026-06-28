@@ -2,76 +2,156 @@
 
 **Sistem Informasi Pendidikan Interaktif Berbasis Web untuk Mendukung Pendidikan Berkualitas**
 
-SIPINTER merupakan aplikasi pembelajaran berbasis web yang memungkinkan guru mengelola materi dan kuis, serta membantu siswa mempelajari materi, mengerjakan kuis, dan memantau perkembangan belajar mereka.
+SIPINTER merupakan aplikasi pembelajaran berbasis web yang memungkinkan guru mengelola materi dan kuis, siswa mempelajari materi dan mengerjakan kuis, serta orang tua memantau perkembangan belajar anak.
 
 Aplikasi ini dikembangkan sebagai proyek **IT Bootcamp Kelompok 10**.
 
 ---
 
-## ✨ Fitur Utama
+# ✨ Fitur Utama
 
-### 👨‍💼 Admin
+## 👨‍💼 Admin
 
 - Login dan logout
-- Mengelola pengguna
-- Mengelola jenjang pendidikan
+- Dashboard statistik aplikasi
+- Mengelola pengguna (Admin, Guru, Siswa, Orang Tua)
+- Mengelola tingkat kesulitan
 - Mengelola kategori materi
-- Mengelola materi pembelajaran
-- Mengelola kuis dan soal
-- Melihat statistik penggunaan aplikasi
+- Mengelola seluruh materi
+- Mengelola seluruh kuis
+- Mengelola soal kuis
 - Melihat laporan aktivitas siswa
+- Mengelola profil akun
 
-### 👨‍🏫 Guru
+---
+
+## 👨‍🏫 Guru
 
 - Login dan logout
+- Dashboard guru
 - Membuat, mengubah, dan menghapus materi
-- Mengunggah file materi
-- Membuat kuis untuk materi
-- Menambahkan soal dan pilihan jawaban
-- Mempublikasikan materi
+- Upload file materi (PDF)
+- Menambahkan kategori dan tingkat kesulitan pada materi
+- Publish dan unpublish materi
+- Membuat kuis
+- Menambahkan soal beserta pilihan jawaban
 - Melihat hasil pengerjaan kuis siswa
+- Mengelola profil akun
+- Menghapus akun sendiri
 
-### 👨‍🎓 Siswa
+---
+
+## 👨‍🎓 Siswa
 
 - Login dan logout
-- Melihat materi yang dipublikasikan
+- Dashboard pembelajaran
+- Melihat rekomendasi materi
+- Melihat materi yang telah disimpan
+- Menjelajahi materi berdasarkan guru
+- Menyimpan materi ke daftar belajar
+- Membaca materi pembelajaran
 - Mengerjakan kuis
-- Mendapatkan skor dan bintang
+- Melihat skor dan peringkat bintang
 - Melihat riwayat pengerjaan kuis
-- Memantau progres pembelajaran
+- Melihat progres pembelajaran
+- Mengelola profil akun
+- Mengunggah avatar
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## 👨‍👩‍👧 Orang Tua
 
-- PHP 8.2+
+- Login dan logout
+- Dashboard orang tua
+- Menghubungkan akun anak menggunakan email dan password anak
+- Melihat daftar anak yang terhubung
+- Memantau progres belajar anak
+- Melihat hasil kuis anak
+- Mengelola profil akun
+- Menghapus akun sendiri
+
+---
+
+# 🚀 Fitur Sistem
+
+- Multi Role Authentication
+- Dashboard berbeda sesuai role
+- Upload file materi PDF
+- Sistem publish materi
+- Progress belajar siswa
+- Quiz dengan penilaian otomatis
+- Riwayat pengerjaan quiz
+- Avatar pengguna
+- Responsive Design
+- Dark Mode (Admin Dashboard)
+- DataTables untuk tabel admin
+- Role-based Authorization menggunakan Laravel Gates & Policies
+- Storage file menggunakan Laravel Storage
+- Asset management menggunakan Vite
+
+---
+
+# 🛠️ Teknologi yang Digunakan
+
+## Backend
+
+- PHP 8.4+
 - Laravel 12
-- MySQL
-- Bootstrap 5
-- Blade Template Engine
-- Laravel Authentication
 - Laravel Eloquent ORM
+- Laravel Authentication
+- Laravel Gates & Policies
+- MySQL
+
+## Frontend
+
+- Blade Template Engine
+- Bootstrap 5
+- Tailwind CSS 4
+- AdminLTE 4
+- Alpine.js
+- Bootstrap Icons
+- DataTables
+- OverlayScrollbars
+
+## Build Tools
+
+- Vite
+- npm
+- Composer
 
 ---
 
-## ⚙️ Instalasi
+# ⚙️ Instalasi
 
-Clone repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/MIkhsanB546/SIPINTER.git
+
 cd SIPINTER
 ```
 
-Install dependency
+---
+
+## Install Dependency PHP
 
 ```bash
 composer install
 ```
 
-Salin file environment
+---
 
-Linux/MacOS
+## Install Dependency Frontend
+
+```bash
+npm install
+```
+
+---
+
+## Salin Environment
+
+Linux / macOS
 
 ```bash
 cp .env.example .env
@@ -83,13 +163,19 @@ Windows
 copy .env.example .env
 ```
 
-Generate application key
+---
+
+## Generate Application Key
 
 ```bash
 php artisan key:generate
 ```
 
-Konfigurasikan database pada file `.env`
+---
+
+## Konfigurasi Database
+
+Edit file `.env`
 
 ```env
 DB_CONNECTION=mysql
@@ -101,33 +187,135 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Jalankan migrasi dan seeder
+## Konfigurasi Google OAuth (Opsional)
 
-```bash
-php artisan migrate:fresh --seed
+Jika ingin menggunakan fitur **Login dengan Google**, tambahkan konfigurasi berikut pada file `.env`:
+
+```env
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_REDIRECT_URL=http://127.0.0.1:8000/auth/google/callback
 ```
 
-Buat symbolic link untuk penyimpanan file
+### Membuat Google OAuth Client
 
-```bash
-php artisan storage:link
-```
+1. Buka **Google Cloud Console**.
+2. Buat project baru atau gunakan project yang sudah ada.
+3. Aktifkan **Google Identity / OAuth API**.
+4. Masuk ke **APIs & Services → Credentials**.
+5. Pilih **Create Credentials → OAuth Client ID**.
+6. Pilih tipe aplikasi **Web application**.
+7. Tambahkan URL berikut:
 
-Jalankan server
-
-```bash
-php artisan serve
-```
-
-Akses aplikasi melalui:
+**Authorized JavaScript Origins**
 
 ```text
 http://127.0.0.1:8000
 ```
 
+**Authorized Redirect URIs**
+
+```text
+http://127.0.0.1:8000/auth/google/callback
+```
+
+8. Salin **Client ID** dan **Client Secret** ke file `.env`.
+
+> **Catatan:** Jika menggunakan domain lain (misalnya deployment atau ngrok), tambahkan domain tersebut ke **Authorized JavaScript Origins** dan **Authorized Redirect URIs**, lalu sesuaikan nilai `GOOGLE_REDIRECT_URL`.
+
 ---
 
-## 👥 Anggota Kelompok 10
+## Migrasi Database
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+---
+
+## Storage Link
+
+```bash
+php artisan storage:link
+```
+
+---
+
+## Build Asset Frontend
+
+```bash
+npm run build
+```
+
+---
+
+## Bersihkan Cache
+
+```bash
+php artisan optimize:clear
+```
+
+---
+
+## Jalankan Aplikasi
+
+```bash
+php artisan serve
+```
+
+Akses aplikasi pada:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# 🔄 Update Project
+
+Jika sudah pernah meng-clone repository dan ingin mengambil perubahan terbaru:
+
+## Ambil perubahan
+
+```bash
+git pull origin main
+```
+
+## Install dependency baru (jika ada)
+
+```bash
+composer install
+
+npm install
+```
+
+## Jalankan migration baru (jika ada)
+
+```bash
+php artisan migrate
+```
+
+## Build ulang asset
+
+```bash
+npm run build
+```
+
+## Bersihkan cache
+
+```bash
+php artisan optimize:clear
+```
+
+## Jalankan aplikasi
+
+```bash
+php artisan serve
+```
+
+---
+
+# 👥 Anggota Kelompok 10
 
 | NIM      | Nama                       |
 | -------- | -------------------------- |
@@ -143,6 +331,6 @@ http://127.0.0.1:8000
 
 ---
 
-## 📄 Lisensi
+# 📄 Lisensi
 
-Proyek ini dikembangkan untuk keperluan akademik dan pembelajaran pada kegiatan IT Bootcamp.
+Proyek ini dikembangkan untuk keperluan akademik dan pembelajaran pada kegiatan **IT Bootcamp Kelompok 10**.
