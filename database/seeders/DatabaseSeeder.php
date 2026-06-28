@@ -14,6 +14,8 @@ use App\Models\QuizAttempt;
 use App\Models\JawabanSiswa;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -59,9 +61,21 @@ class DatabaseSeeder extends Seeder
         // SISWA (15 students)
         // ============================================================
         $siswaNames = [
-            'Andi', 'Bunga', 'Citra', 'Doni', 'Eka',
-            'Farhan', 'Gita', 'Hadi', 'Intan', 'Joko',
-            'Kiki', 'Lina', 'Mila', 'Nando', 'Ocha',
+            'Andi',
+            'Bunga',
+            'Citra',
+            'Doni',
+            'Eka',
+            'Farhan',
+            'Gita',
+            'Hadi',
+            'Intan',
+            'Joko',
+            'Kiki',
+            'Lina',
+            'Mila',
+            'Nando',
+            'Ocha',
         ];
         $siswas = [];
         foreach ($siswaNames as $name) {
@@ -118,8 +132,16 @@ class DatabaseSeeder extends Seeder
         // KATEGORI MATERI (10 categories)
         // ============================================================
         $kategoriNames = [
-            'Matematika', 'Bahasa Indonesia', 'IPA', 'IPS', 'Bahasa Inggris',
-            'Seni Budaya', 'PJOK', 'PKN', 'Agama', 'Informatika',
+            'Matematika',
+            'Bahasa Indonesia',
+            'IPA',
+            'IPS',
+            'Bahasa Inggris',
+            'Seni Budaya',
+            'PJOK',
+            'PKN',
+            'Agama',
+            'Informatika',
         ];
         $kategoris = [];
         foreach ($kategoriNames as $name) {
@@ -153,6 +175,20 @@ class DatabaseSeeder extends Seeder
             ['judul' => 'Pemrograman Dasar', 'deskripsi' => 'Logika pemrograman dan algoritma dasar.'],
         ];
 
+        // ============================================================
+        // Copy sample PDF to storage
+        // ============================================================
+
+        $sourcePdf = database_path('seeders/assets/contoh_materi.pdf');
+        $destinationPdf = 'materi/contoh_materi.pdf';
+
+        if (File::exists($sourcePdf)) {
+            Storage::disk('public')->put(
+                $destinationPdf,
+                File::get($sourcePdf)
+            );
+        }
+
         foreach ($materiData as $i => $md) {
             $guru = $gurus[$i % 3];
             $tingkat = $tingkatList[$i % 3];
@@ -164,7 +200,7 @@ class DatabaseSeeder extends Seeder
                 'id_kategori_materi' => $kategori->id_kategori_materi,
                 'judul' => $md['judul'],
                 'deskripsi' => $md['deskripsi'],
-                'file_materi' => null,
+                'file_materi' => $destinationPdf,
                 'thumbnail' => null,
                 'is_published' => true,
             ]);
