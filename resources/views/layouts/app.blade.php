@@ -28,88 +28,11 @@
     {{-- <link rel="preload" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}" as="style" /> --}}
     <!--end::Accessibility Features-->
 
-    <!--begin::Fonts-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
-        integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous" media="print"
-        onload="this.media = 'all'" />
-    <!--end::Fonts-->
 
-    <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"
-        crossorigin="anonymous" />
-    <!--end::Third Party Plugin(OverlayScrollbars)-->
-
-    <!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-        crossorigin="anonymous" />
-    <!--end::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
-
-    <style>
-        :root {
-            --si-primary: #095890;
-            --si-primary-hover: #0A6AAE;
-            --si-light-bg: #F5F9FC;
-            --si-border: #DDE7EF;
-            --si-text-dark: #1E293B;
-            --si-muted: #64748B;
-        }
-
-        .text-si-primary {
-            color: var(--si-primary) !important;
-        }
-
-        .bg-si-primary {
-            background-color: var(--si-primary) !important;
-        }
-
-        .border-si-primary {
-            border-color: var(--si-primary) !important;
-        }
-
-        .btn-si-primary {
-            color: #fff;
-            background-color: var(--si-primary);
-            border-color: var(--si-primary);
-        }
-
-        .btn-si-primary:hover {
-            color: #fff;
-            background-color: var(--si-primary-hover);
-            border-color: var(--si-primary-hover);
-        }
-
-        .btn-outline-si-primary {
-            color: var(--si-primary);
-            border-color: var(--si-primary);
-        }
-
-        .btn-outline-si-primary:hover {
-            color: #fff;
-            background-color: var(--si-primary);
-            border-color: var(--si-primary);
-        }
-
-        a.text-si-primary:hover {
-            color: var(--si-primary-hover) !important;
-        }
-
-        .sidebar-brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-    </style>
-
-    <!--begin::Third Party Plugin(DataTables)-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.11/css/dataTables.bootstrap5.min.css"
-        crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"
-        crossorigin="anonymous" />
-    <!--end::Third Party Plugin(DataTables)-->
+    @vite(['resources/css/admin.css', 'resources/js/admin.js'])
 
     @stack('styles')
 </head>
@@ -181,8 +104,8 @@
                                 <img src="{{ Auth::user()->avatar }}" class="user-image rounded-circle shadow"
                                     alt="Avatar" />
                             @else
-                                <img src="{{ asset('images/default-user.jpg') }}" class="user-image rounded-circle shadow"
-                                    alt="Default Avatar" />
+                                <img src="{{ asset('images/default-user.jpg') }}"
+                                    class="user-image rounded-circle shadow" alt="Default Avatar" />
                             @endif
                             <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                         </a>
@@ -364,124 +287,34 @@
     </div>
     <!--end::App Wrapper-->
     <!--begin::Script-->
-    <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
-        crossorigin="anonymous"></script>
-    <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous">
-    </script>
-    <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
+    <!--begin::Required Plugin(AdminLTE)-->
     <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
-    <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
-    <script>
-        const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
-        const Default = {
-            scrollbarTheme: 'os-theme-light',
-            scrollbarAutoHide: 'leave',
-            scrollbarClickScroll: true,
-        };
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
-
-            // Disable OverlayScrollbars on mobile devices to prevent touch interference
-            const isMobile = window.innerWidth <= 992;
-
-            if (
-                sidebarWrapper &&
-                OverlayScrollbarsGlobal?.OverlayScrollbars !== undefined &&
-                !isMobile
-            ) {
-                OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
-                    scrollbars: {
-                        theme: Default.scrollbarTheme,
-                        autoHide: Default.scrollbarAutoHide,
-                        clickScroll: Default.scrollbarClickScroll,
-                    },
-                });
-            }
-        });
-    </script>
-    <!--end::OverlayScrollbars Configure--><!--begin::Color Mode Toggle (#6010)-->
-    <script>
-        (() => {
-            'use strict';
-
-            const STORAGE_KEY = 'lte-theme';
-
-            const getStoredTheme = () => localStorage.getItem(STORAGE_KEY);
-            const setStoredTheme = (theme) => localStorage.setItem(STORAGE_KEY, theme);
-
-            const prefersDark = () => globalThis.matchMedia('(prefers-color-scheme: dark)').matches;
-
-            const getPreferredTheme = () => {
-                const stored = getStoredTheme();
-                if (stored) return stored;
-                return prefersDark() ? 'dark' : 'light';
-            };
-
-            const setTheme = (theme) => {
-                const resolved = theme === 'auto' ? (prefersDark() ? 'dark' : 'light') : theme;
-                document.documentElement.setAttribute('data-bs-theme', resolved);
-            };
-
-            setTheme(getPreferredTheme());
-
-            const showActiveTheme = (theme) => {
-                // Highlight the active dropdown option
-                document.querySelectorAll('[data-bs-theme-value]').forEach((el) => {
-                    el.classList.remove('active');
-                    el.setAttribute('aria-pressed', 'false');
-                    const check = el.querySelector('.bi-check-lg');
-                    if (check) check.classList.add('d-none');
-                });
-                const active = document.querySelector(`[data-bs-theme-value="${theme}"]`);
-                if (active) {
-                    active.classList.add('active');
-                    active.setAttribute('aria-pressed', 'true');
-                    const check = active.querySelector('.bi-check-lg');
-                    if (check) check.classList.remove('d-none');
-                }
-                // Sync the topbar trigger icon
-                document.querySelectorAll('[data-lte-theme-icon]').forEach((icon) => {
-                    icon.classList.toggle('d-none', icon.dataset.lteThemeIcon !== theme);
-                });
-            };
-
-            globalThis.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-                const stored = getStoredTheme();
-                if (!stored || stored === 'auto') setTheme(getPreferredTheme());
-            });
-
-            document.addEventListener('DOMContentLoaded', () => {
-                showActiveTheme(getPreferredTheme());
-                document.querySelectorAll('[data-bs-theme-value]').forEach((toggle) => {
-                    toggle.addEventListener('click', () => {
-                        const theme = toggle.getAttribute('data-bs-theme-value');
-                        setStoredTheme(theme);
-                        setTheme(theme);
-                        showActiveTheme(theme);
-                    });
-                });
-            });
-        })();
-    </script>
-    <!--end::Color Mode Toggle-->
-
-    <!-- OPTIONAL SCRIPTS -->
-
-    <!--begin::Third Party Plugin(DataTables)-->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.13.11/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.13.11/js/dataTables.bootstrap5.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js" crossorigin="anonymous">
-    </script>
-    <!--end::Third Party Plugin(DataTables)-->
+    <!--end::Required Plugin(AdminLTE)-->
 
     <!--end::Script-->
+
+    <!--begin::jQuery Stub until Vite admin.js loads-->
+    <script>
+        window._$q = [];
+        window.$ = window.jQuery = function (s) {
+            if (typeof s === 'function') {
+                window._$q.push(s);
+                return document;
+            }
+            return {
+                ready: function (fn) {
+                    window._$q.push(fn);
+                    return this;
+                },
+                DataTable: function () { return null; },
+            };
+        };
+        window.jQuery.fn = {};
+        window.jQuery.ready = function (fn) {
+            window._$q.push(fn);
+        };
+    </script>
+    <!--end::jQuery Stub-->
 
     @stack('scripts')
 </body>

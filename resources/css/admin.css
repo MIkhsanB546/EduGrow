@@ -1,0 +1,59 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+@import "datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css";
+@import "overlayscrollbars/styles/overlayscrollbars.css";
+
+:root {
+    --si-primary: #095890;
+    --si-primary-hover: #0A6AAE;
+    --si-light-bg: #F5F9FC;
+    --si-border: #DDE7EF;
+    --si-text-dark: #1E293B;
+    --si-muted: #64748B;
+}
+
+.text-si-primary {
+    color: var(--si-primary) !important;
+}
+
+.bg-si-primary {
+    background-color: var(--si-primary) !important;
+}
+
+.border-si-primary {
+    border-color: var(--si-primary) !important;
+}
+
+.btn-si-primary {
+    color: #fff;
+    background-color: var(--si-primary);
+    border-color: var(--si-primary);
+}
+
+.btn-si-primary:hover {
+    color: #fff;
+    background-color: var(--si-primary-hover);
+    border-color: var(--si-primary-hover);
+}
+
+.btn-outline-si-primary {
+    color: var(--si-primary);
+    border-color: var(--si-primary);
+}
+
+.btn-outline-si-primary:hover {
+    color: #fff;
+    background-color: var(--si-primary);
+    border-color: var(--si-primary);
+}
+
+a.text-si-primary:hover {
+    color: var(--si-primary-hover) !important;
+}
+
+.sidebar-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}

@@ -10,6 +10,7 @@ use App\Policies\QuizPolicy;
 use App\Policies\SoalPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,8 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('guru', fn($user) => $user->role === 'guru');
         Gate::define('siswa', fn($user) => $user->role === 'siswa');
         Gate::define('orang_tua', fn($user) => $user->role === 'orang_tua');
+        if (str_contains(config('app.url'), 'ngrok')) {
+            URL::forceScheme('https');
+        }
     }
 }
