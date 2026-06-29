@@ -38,6 +38,10 @@ Aplikasi ini dikembangkan sebagai proyek **IT Bootcamp Kelompok 10**.
 - Melihat hasil pengerjaan kuis siswa
 - Mengelola profil akun
 - Menghapus akun sendiri
+- Generate ringkasan materi menggunakan AI Gemini dari file PDF
+- Generate kuis pilihan ganda menggunakan AI Gemini dari file PDF
+- Memberikan instruksi tambahan (prompt) kepada AI saat membuat kuis
+- Meninjau dan mengedit hasil AI sebelum dipublikasikan
 
 ---
 
@@ -88,6 +92,10 @@ Aplikasi ini dikembangkan sebagai proyek **IT Bootcamp Kelompok 10**.
 - Role-based Authorization menggunakan Laravel Gates & Policies
 - Storage file menggunakan Laravel Storage
 - Asset management menggunakan Vite
+- AI-generated material summary menggunakan Google Gemini
+- AI-generated multiple choice quiz dari materi PDF
+- Prompt kustom untuk pembuatan kuis oleh guru
+- Preview hasil AI sebelum disimpan
 
 ---
 
@@ -100,6 +108,9 @@ Aplikasi ini dikembangkan sebagai proyek **IT Bootcamp Kelompok 10**.
 - Laravel Eloquent ORM
 - Laravel Authentication
 - Laravel Gates & Policies
+- Google Gemini API
+- Laravel HTTP Client
+- Smalot PDF Parser
 - MySQL
 
 ## Frontend
@@ -134,6 +145,14 @@ cd SIPINTER
 ---
 
 ## Install Dependency PHP
+
+Dependency PHP akan menginstal package berikut secara otomatis:
+
+- Laravel Framework
+- Laravel Socialite
+- DomPDF
+- Smalot PDF Parser
+- dan dependency lainnya
 
 ```bash
 composer install
@@ -222,6 +241,30 @@ http://127.0.0.1:8000/auth/google/callback
 8. Salin **Client ID** dan **Client Secret** ke file `.env`.
 
 > **Catatan:** Jika menggunakan domain lain (misalnya deployment atau ngrok), tambahkan domain tersebut ke **Authorized JavaScript Origins** dan **Authorized Redirect URIs**, lalu sesuaikan nilai `GOOGLE_REDIRECT_URL`.
+
+## Konfigurasi Gemini AI
+
+Fitur AI digunakan untuk:
+
+- Membuat ringkasan materi secara otomatis dari file PDF
+- Membuat kuis pilihan ganda berdasarkan isi materi PDF
+
+Tambahkan konfigurasi berikut pada file `.env`:
+
+```env
+GEMINI_API_KEY=your-gemini-api-key
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+### Mendapatkan API Key Gemini
+
+1. Buka Google AI Studio.
+2. Login menggunakan akun Google.
+3. Pilih **Get API Key**.
+4. Buat API Key baru.
+5. Salin API Key ke variabel `GEMINI_API_KEY`.
+
+> Pastikan API Key memiliki akses ke model yang digunakan pada `GEMINI_MODEL`.
 
 ---
 
