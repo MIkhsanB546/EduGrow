@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Daftar — SIPINTER</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/sipinter-icon.ico') }}">
     @vite(['resources/css/auth.css', 'resources/js/auth.js'])
     @stack('styles')
 </head>

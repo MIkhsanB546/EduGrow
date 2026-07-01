@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Scan QR — SIPINTER</title>
-    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" crossorigin="anonymous">
-    </script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/sipinter-icon.ico') }}">
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" crossorigin="anonymous"></script>
     @vite(['resources/css/auth.css', 'resources/js/auth.js'])
     @stack('styles')
 </head>
@@ -42,7 +42,8 @@
 
                         <hr style="border-color: #DDE7EF;">
 
-                        <a href="{{ route('login') }}" class="btn btn-outline-secondary rounded-pill py-2 w-100" style="border-color: #DDE7EF;">
+                        <a href="{{ route('login') }}" class="btn btn-outline-secondary rounded-pill py-2 w-100"
+                            style="border-color: #DDE7EF;">
                             <i class="bi bi-arrow-left me-1"></i> Kembali ke Login
                         </a>
 
@@ -56,7 +57,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const readerEl = document.getElementById('qr-reader');
             const errorEl = document.getElementById('qr-scanner-error');
             const errorText = document.getElementById('qr-scanner-error-text');
@@ -76,7 +77,10 @@
 
             const config = {
                 fps: 10,
-                qrbox: { width: 250, height: 250 },
+                qrbox: {
+                    width: 250,
+                    height: 250
+                },
             };
 
             function isMobile() {
@@ -85,23 +89,26 @@
 
             const facingMode = isMobile() ? 'environment' : 'user';
 
-            html5QrCode.start(
-                { facingMode },
+            html5QrCode.start({
+                    facingMode
+                },
                 config,
                 onScanSuccess
             ).then(() => {
                 loadingEl.classList.add('d-none');
             }).catch((err) => {
                 if (isMobile() && facingMode === 'environment') {
-                    html5QrCode.start(
-                        { facingMode: 'user' },
+                    html5QrCode.start({
+                            facingMode: 'user'
+                        },
                         config,
                         onScanSuccess
                     ).then(() => {
                         loadingEl.classList.add('d-none');
                     }).catch(() => {
                         showError(
-                            'Kamera tidak dapat diakses. Pastikan Anda telah mengizinkan akses kamera.');
+                            'Kamera tidak dapat diakses. Pastikan Anda telah mengizinkan akses kamera.'
+                            );
                     });
                 } else {
                     showError(
