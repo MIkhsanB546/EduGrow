@@ -26,6 +26,7 @@ use App\Http\Controllers\OrangTua\StudentConnectionController;
 use App\Http\Controllers\Student\ParentRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\AiChatController;
 use App\Http\Controllers\StyleGuideController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,8 @@ Route::middleware('guest')->group(function () {
 Route::get('/', [LandingController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
+    Route::post('/ai/chat', [AiChatController::class, 'chat'])->name('ai.chat');
+
     Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
 
     // ============================================================

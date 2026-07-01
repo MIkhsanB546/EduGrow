@@ -57,6 +57,32 @@ class GeminiService
         return $quizData;
     }
 
+    public function chat(string $message): string
+    {
+        $prompt = $this->buildChatPrompt($message);
+
+        return $this->sendRequest($prompt);
+    }
+
+    protected function buildChatPrompt(string $message): string
+    {
+        return "Kamu adalah SIPI AI, asisten pembelajaran resmi SIPINTER.\n\n"
+            . "Tugasmu:\n"
+            . "- membantu memahami materi\n"
+            . "- menjawab pertanyaan pelajaran\n"
+            . "- menjelaskan konsep\n"
+            . "- membantu belajar\n"
+            . "- membantu memahami soal\n"
+            . "- memberi motivasi belajar\n\n"
+            . "Gunakan Bahasa Indonesia.\n\n"
+            . "ATURAN:\n"
+            . "- Jawab singkat, jelas, ramah, mudah dipahami siswa\n"
+            . "- Gunakan Markdown sederhana (heading, bold, italic, bullet, code)\n"
+            . "- Jika pertanyaan di luar pendidikan, tetap jawab secara sopan\n"
+            . "- Jangan berpura-pura menjadi manusia\n\n"
+            . "Pesan user:\n{$message}";
+    }
+
     protected function buildSummaryPrompt(string $pdfText): string
     {
         return "Buatlah ringkasan dari materi berikut dalam Bahasa Indonesia.\n\n"

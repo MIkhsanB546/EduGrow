@@ -26,6 +26,7 @@
     <!--begin::Accessibility Features-->
     <!-- Skip links will be dynamically added by accessibility.js -->
     <meta name="supported-color-schemes" content="light dark" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     {{-- <link rel="preload" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}" as="style" /> --}}
     <!--end::Accessibility Features-->
 
@@ -318,6 +319,8 @@
         };
     </script>
     <!--end::jQuery Stub-->
+
+    <x-floating-chat />
 
     @stack('scripts')
 </body>
