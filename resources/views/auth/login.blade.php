@@ -80,6 +80,15 @@
                                 @enderror
                             </div>
 
+                            {{-- Remember Me --}}
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                    {{ old('remember') ? 'checked' : '' }}>
+                                <label class="form-check-label" for="remember" style="color: #64748B;">
+                                    Ingat Saya
+                                </label>
+                            </div>
+
                             {{-- Tombol Submit --}}
                             <button type="submit"
                                 class="btn-si-primary btn w-100 rounded-pill py-2 fw-semibold border-0">
