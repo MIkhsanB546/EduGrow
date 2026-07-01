@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Style Guide — SIPINTER</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/sipinter-icon.ico') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css">
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
     @vite(['resources/css/admin.css', 'resources/js/admin.js'])
@@ -183,22 +184,28 @@
             border-radius: 8px;
             overflow: hidden;
         }
+
         .preview-sidebar .brand {
             padding: 16px;
-            border-bottom: 1px solid rgba(255,255,255,.1);
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .preview-sidebar .nav-item {
             padding: 10px 16px;
-            color: rgba(255,255,255,.7);
+            color: rgba(255, 255, 255, .7);
             display: flex;
             align-items: center;
             gap: 10px;
             font-size: .9rem;
         }
-        .preview-sidebar .nav-item:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+        .preview-sidebar .nav-item:hover {
+            background: rgba(255, 255, 255, .1);
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -220,7 +227,8 @@
         {{-- 1. COLORS --}}
         <section class="sg-section" id="warna">
             <h2 class="sg-title">Colors</h2>
-            <p class="text-muted mb-4">Warna yang digunakan di dashboard admin/guru. Didefinisikan di <code>admin.css</code> sebagai CSS custom properties.</p>
+            <p class="text-muted mb-4">Warna yang digunakan di dashboard admin/guru. Didefinisikan di
+                <code>admin.css</code> sebagai CSS custom properties.</p>
             @php
                 $adminColors = [
                     ['#095890', 'Primary', 'Tombol utama, tautan, header (--si-primary)'],
@@ -255,7 +263,8 @@
         {{-- 2. TYPOGRAPHY --}}
         <section class="sg-section" id="tipografi">
             <h2 class="sg-title">Typography</h2>
-            <p class="text-muted mb-4">Font: <strong>Source Sans 3</strong> via AdminLTE. Digunakan di seluruh dashboard.</p>
+            <p class="text-muted mb-4">Font: <strong>Source Sans 3</strong> via AdminLTE. Digunakan di seluruh
+                dashboard.</p>
             <div class="sg-preview-wrap">
                 <div class="sg-preview-body">
                     <h1 class="fw-bold" style="color:var(--si-text-dark)">h1 — Judul Halaman</h1>
@@ -329,13 +338,16 @@
                         </div>
                     </div>
 
-                    <div class="sg-code mt-3"><code>&lt;button class="btn btn-primary btn-sm"&gt;&lt;i class="bi bi-plus-lg"&gt;&lt;/i&gt; Tambah&lt;/button&gt;
-&lt;button class="btn btn-info btn-sm"&gt;&lt;i class="bi bi-magic"&gt;&lt;/i&gt; Generate Ringkasan AI&lt;/button&gt;
-&lt;div class="btn-group btn-group-sm"&gt;
-    &lt;a class="btn btn-info"&gt;&lt;i class="bi bi-eye"&gt;&lt;/i&gt;&lt;/a&gt;
-    &lt;a class="btn btn-warning"&gt;&lt;i class="bi bi-pencil"&gt;&lt;/i&gt;&lt;/a&gt;
-    &lt;button class="btn btn-danger"&gt;&lt;i class="bi bi-trash"&gt;&lt;/i&gt;&lt;/button&gt;
-&lt;/div&gt;</code></div>
+                    <div class="sg-code mt-3"><code>&lt;button class="btn btn-primary btn-sm"&gt;&lt;i
+                            class="bi bi-plus-lg"&gt;&lt;/i&gt; Tambah&lt;/button&gt;
+                            &lt;button class="btn btn-info btn-sm"&gt;&lt;i class="bi bi-magic"&gt;&lt;/i&gt; Generate
+                            Ringkasan AI&lt;/button&gt;
+                            &lt;div class="btn-group btn-group-sm"&gt;
+                            &lt;a class="btn btn-info"&gt;&lt;i class="bi bi-eye"&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a class="btn btn-warning"&gt;&lt;i class="bi bi-pencil"&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;button class="btn btn-danger"&gt;&lt;i
+                            class="bi bi-trash"&gt;&lt;/i&gt;&lt;/button&gt;
+                            &lt;/div&gt;</code></div>
                 </div>
             </div>
         </section>
@@ -368,21 +380,21 @@
                     </div>
 
                     <div class="sg-code"><code>@@if (session('success'))
-    &lt;div class="alert alert-success alert-dismissible fade show"&gt;
-        @{{ session('success') }}
-        &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;
-    &lt;/div&gt;
-@@endif
+                            &lt;div class="alert alert-success alert-dismissible fade show"&gt;
+                            @{{ session('success') }}
+                            &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;
+                            &lt;/div&gt;
+                            @@endif
 
-@@if($errors->any())
-    &lt;div class="alert alert-danger"&gt;
-        &lt;ul class="mb-0"&gt;
-            @@foreach($errors->all() as $error)
-                &lt;li&gt;@{{ $error }}&lt;/li&gt;
-            @@endforeach
-        &lt;/ul&gt;
-    &lt;/div&gt;
-@@endif</code></div>
+                            @@if($errors->any())
+                            &lt;div class="alert alert-danger"&gt;
+                            &lt;ul class="mb-0"&gt;
+                            @@foreach($errors->all() as $error)
+                            &lt;li&gt;@{{ $error }}&lt;/li&gt;
+                            @@endforeach
+                            &lt;/ul&gt;
+                            &lt;/div&gt;
+                            @@endif</code></div>
                 </div>
             </div>
         </section>
@@ -390,7 +402,8 @@
         {{-- 5. FORMS --}}
         <section class="sg-section" id="form">
             <h2 class="sg-title">Forms</h2>
-            <p class="text-muted mb-4">Form create/edit menggunakan kelas Bootstrap. Semua field mengikuti pola yang sama.</p>
+            <p class="text-muted mb-4">Form create/edit menggunakan kelas Bootstrap. Semua field mengikuti pola yang
+                sama.</p>
 
             <div class="card sg-inner-card">
                 <div class="card-header">
@@ -437,12 +450,14 @@
             </div>
 
             <div class="sg-code mt-3"><code>&lt;div class="mb-3"&gt;
-    &lt;label class="form-label"&gt;Nama &lt;span class="text-danger"&gt;*&lt;/span&gt;&lt;/label&gt;
-    &lt;input type="text" class="form-control @@error('nama') is-invalid @@enderror" value="@{{ old('nama') }}"&gt;
-    @@error('nama')
-        &lt;div class="invalid-feedback"&gt;@{{ $message }}&lt;/div&gt;
-    @@enderror
-&lt;/div&gt;</code></div>
+                    &lt;label class="form-label"&gt;Nama &lt;span class="text-danger"&gt;*&lt;/span&gt;&lt;/label&gt;
+                    &lt;input type="text"
+                    class="form-control @@error('nama') is-invalid @@enderror"
+                    value="@{{ old('nama') }}"&gt;
+                    @@error('nama')
+                    &lt;div class="invalid-feedback"&gt;@{{ $message }}&lt;/div&gt;
+                    @@enderror
+                    &lt;/div&gt;</code></div>
         </section>
 
         {{-- 6. TOAST --}}
@@ -452,49 +467,54 @@
 
             <div class="sg-preview-wrap">
                 <div class="sg-preview-body">
-                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" style="max-width:350px">
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true"
+                        style="max-width:350px">
                         <div class="toast-header text-bg-success">
                             <strong class="me-auto">Berhasil</strong>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+                            <button type="button" class="btn-close btn-close-white"
+                                data-bs-dismiss="toast"></button>
                         </div>
                         <div class="toast-body">Ringkasan berhasil dibuat.</div>
                     </div>
-                    <div class="toast show mt-2" role="alert" aria-live="assertive" aria-atomic="true" style="max-width:350px">
+                    <div class="toast show mt-2" role="alert" aria-live="assertive" aria-atomic="true"
+                        style="max-width:350px">
                         <div class="toast-header text-bg-danger">
                             <strong class="me-auto">Gagal</strong>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+                            <button type="button" class="btn-close btn-close-white"
+                                data-bs-dismiss="toast"></button>
                         </div>
                         <div class="toast-body">Gagal membuat quiz. Silakan coba lagi.</div>
                     </div>
 
-                    <div class="sg-code mt-3"><code>&lt;div class="toast-container position-fixed bottom-0 end-0 p-3"&gt;
-    &lt;div id="aiToast" class="toast" role="alert"&gt;
-        &lt;div class="toast-header"&gt;
-            &lt;strong class="me-auto"&gt;AI Generate&lt;/strong&gt;
-            &lt;button type="button" class="btn-close" data-bs-dismiss="toast"&gt;
-        &lt;/div&gt;
-        &lt;div class="toast-body"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+                    <div class="sg-code mt-3"><code>&lt;div
+                            class="toast-container position-fixed bottom-0 end-0 p-3"&gt;
+                            &lt;div id="aiToast" class="toast" role="alert"&gt;
+                            &lt;div class="toast-header"&gt;
+                            &lt;strong class="me-auto"&gt;AI Generate&lt;/strong&gt;
+                            &lt;button type="button" class="btn-close" data-bs-dismiss="toast"&gt;
+                            &lt;/div&gt;
+                            &lt;div class="toast-body"&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;/div&gt;
 
-&lt;script&gt;
-function showToast(type, message) {
-    const toast = document.getElementById('aiToast');
-    const header = toast.querySelector('.toast-header strong');
-    const body = toast.querySelector('.toast-body');
-    if (type === 'success') {
-        header.textContent = 'Berhasil';
-        toast.classList.remove('text-bg-danger');
-        toast.classList.add('text-bg-success');
-    } else {
-        header.textContent = 'Gagal';
-        toast.classList.remove('text-bg-success');
-        toast.classList.add('text-bg-danger');
-    }
-    body.textContent = message;
-    new bootstrap.Toast(toast).show();
-}
-&lt;/script&gt;</code></div>
+                            &lt;script&gt;
+                            function showToast(type, message) {
+                            const toast = document.getElementById('aiToast');
+                            const header = toast.querySelector('.toast-header strong');
+                            const body = toast.querySelector('.toast-body');
+                            if (type === 'success') {
+                            header.textContent = 'Berhasil';
+                            toast.classList.remove('text-bg-danger');
+                            toast.classList.add('text-bg-success');
+                            } else {
+                            header.textContent = 'Gagal';
+                            toast.classList.remove('text-bg-success');
+                            toast.classList.add('text-bg-danger');
+                            }
+                            body.textContent = message;
+                            new bootstrap.Toast(toast).show();
+                            }
+                            &lt;/script&gt;</code></div>
                 </div>
             </div>
         </section>
@@ -507,7 +527,8 @@ function showToast(type, message) {
             <div class="sg-preview-wrap">
                 <div class="sg-preview-body">
                     <p class="sg-sub">Quiz Prompt Modal</p>
-                    <div class="modal-dialog modal-lg" style="position:static;display:block;z-index:0;margin-bottom:1rem">
+                    <div class="modal-dialog modal-lg"
+                        style="position:static;display:block;z-index:0;margin-bottom:1rem">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Generate Quiz dengan AI</h5>
@@ -517,17 +538,23 @@ function showToast(type, message) {
                                 <p class="text-muted">Berikan instruksi tambahan kepada AI. Opsional.</p>
                                 <div class="mb-3">
                                     <label class="form-label">Instruksi Tambahan</label>
-                                    <textarea class="form-control" rows="3" placeholder="Contoh: Buat 10 soal pilihan ganda&#10;Fokus pada Bab 3&#10;Tingkat kesulitan sedang"></textarea>
+                                    <textarea class="form-control" rows="3"
+                                        placeholder="Contoh: Buat 10 soal pilihan ganda&#10;Fokus pada Bab 3&#10;Tingkat kesulitan sedang"></textarea>
                                 </div>
                                 <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge border text-secondary px-2 py-1" style="cursor:pointer;background:#f0f0f0;">✓ Buat 20 soal</span>
-                                    <span class="badge border text-secondary px-2 py-1" style="cursor:pointer;background:#f0f0f0;">✓ Fokus pada Bab 4</span>
-                                    <span class="badge border text-secondary px-2 py-1" style="cursor:pointer;background:#f0f0f0;">✓ Tingkat kesulitan sulit</span>
+                                    <span class="badge border text-secondary px-2 py-1"
+                                        style="cursor:pointer;background:#f0f0f0;">✓ Buat 20 soal</span>
+                                    <span class="badge border text-secondary px-2 py-1"
+                                        style="cursor:pointer;background:#f0f0f0;">✓ Fokus pada Bab 4</span>
+                                    <span class="badge border text-secondary px-2 py-1"
+                                        style="cursor:pointer;background:#f0f0f0;">✓ Tingkat kesulitan sulit</span>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-info"><i class="bi bi-magic"></i> Generate</button>
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-info"><i class="bi bi-magic"></i>
+                                    Generate</button>
                             </div>
                         </div>
                     </div>
@@ -535,25 +562,28 @@ function showToast(type, message) {
                     <p class="sg-sub mt-3">Delete Confirmation (inline form)</p>
                     <div class="d-flex gap-2">
                         <form onsubmit="return confirm('Yakin ingin menghapus?')">
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Hapus</button>
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>
+                                Hapus</button>
                         </form>
                     </div>
 
-                    <div class="sg-code mt-3"><code>&lt;div class="modal fade" id="quizPromptModal" tabindex="-1"&gt;
-    &lt;div class="modal-dialog modal-lg"&gt;
-        &lt;div class="modal-content"&gt;
-            &lt;div class="modal-header"&gt;
-                &lt;h5 class="modal-title"&gt;Generate Quiz dengan AI&lt;/h5&gt;
-                &lt;button type="button" class="btn-close" data-bs-dismiss="modal"&gt;
-            &lt;/div&gt;
-            &lt;div class="modal-body"&gt;...&lt;/div&gt;
-            &lt;div class="modal-footer"&gt;
-                &lt;button type="button" class="btn btn-secondary"&gt;Cancel&lt;/button&gt;
-                &lt;button type="button" class="btn btn-info"&gt;&lt;i class="bi bi-magic"&gt;&lt;/i&gt; Generate&lt;/button&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></div>
+                    <div class="sg-code mt-3"><code>&lt;div class="modal fade" id="quizPromptModal"
+                            tabindex="-1"&gt;
+                            &lt;div class="modal-dialog modal-lg"&gt;
+                            &lt;div class="modal-content"&gt;
+                            &lt;div class="modal-header"&gt;
+                            &lt;h5 class="modal-title"&gt;Generate Quiz dengan AI&lt;/h5&gt;
+                            &lt;button type="button" class="btn-close" data-bs-dismiss="modal"&gt;
+                            &lt;/div&gt;
+                            &lt;div class="modal-body"&gt;...&lt;/div&gt;
+                            &lt;div class="modal-footer"&gt;
+                            &lt;button type="button" class="btn btn-secondary"&gt;Cancel&lt;/button&gt;
+                            &lt;button type="button" class="btn btn-info"&gt;&lt;i class="bi bi-magic"&gt;&lt;/i&gt;
+                            Generate&lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;/div&gt;</code></div>
                 </div>
             </div>
         </section>
@@ -561,7 +591,8 @@ function showToast(type, message) {
         {{-- 8. CARDS --}}
         <section class="sg-section" id="kartu">
             <h2 class="sg-title">Cards</h2>
-            <p class="text-muted mb-4">Struktur kartu AdminLTE: <code>.card</code> &gt; <code>.card-header</code> + <code>.card-body</code> + <code>.card-footer</code>.</p>
+            <p class="text-muted mb-4">Struktur kartu AdminLTE: <code>.card</code> &gt; <code>.card-header</code> +
+                <code>.card-body</code> + <code>.card-footer</code>.</p>
 
             <div class="row g-4">
                 <div class="col-md-6">
@@ -570,7 +601,8 @@ function showToast(type, message) {
                         <div class="card-header">
                             <h3 class="card-title">Judul Kartu</h3>
                             <div class="card-tools">
-                                <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg"></i> Tambah</a>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg"></i>
+                                    Tambah</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -600,11 +632,23 @@ function showToast(type, message) {
                         <div class="card-body p-0">
                             <table class="table table-bordered table-hover mb-0">
                                 <thead>
-                                    <tr><th>No</th><th>Nama</th><th>Status</th></tr>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Status</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td>1</td><td>Contoh Data</td><td><span class="badge bg-success">Aktif</span></td></tr>
-                                    <tr><td>2</td><td>Contoh Lain</td><td><span class="badge bg-secondary">Draft</span></td></tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Contoh Data</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Contoh Lain</td>
+                                        <td><span class="badge bg-secondary">Draft</span></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -629,8 +673,10 @@ function showToast(type, message) {
                             <h3 class="profile-username">Nama User</h3>
                             <p><span class="badge bg-primary text-capitalize">admin</span></p>
                             <ul class="list-group list-group-unbordered mb-3">
-                                <li class="list-group-item"><b>Email</b><span class="float-end">user@mail.com</span></li>
-                                <li class="list-group-item"><b>Bergabung</b><span class="float-end">26 Jun 2026</span></li>
+                                <li class="list-group-item"><b>Email</b><span class="float-end">user@mail.com</span>
+                                </li>
+                                <li class="list-group-item"><b>Bergabung</b><span class="float-end">26 Jun 2026</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -638,13 +684,18 @@ function showToast(type, message) {
                 <div class="col-md-6">
                     <p class="sg-sub">Card with Footer</p>
                     <div class="card sg-inner-card">
-                        <div class="card-header"><h3 class="card-title">Card dengan Footer</h3></div>
-                        <div class="card-body"><p>Konten utama</p></div>
+                        <div class="card-header">
+                            <h3 class="card-title">Card dengan Footer</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Konten utama</p>
+                        </div>
                         <div class="card-footer d-flex justify-content-between align-items-center">
                             <small class="text-muted">Info tambahan</small>
                             <nav>
                                 <ul class="pagination pagination-sm mb-0">
-                                    <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                                    <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
+                                    </li>
                                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
                                 </ul>
@@ -655,20 +706,21 @@ function showToast(type, message) {
             </div>
 
             <div class="sg-code mt-3"><code>&lt;div class="card"&gt;
-    &lt;div class="card-header"&gt;
-        &lt;h3 class="card-title"&gt;Judul Kartu&lt;/h3&gt;
-        &lt;div class="card-tools"&gt;
-            &lt;a href="#" class="btn btn-primary btn-sm"&gt;Tambah&lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="card-body"&gt;...&lt;/div&gt;
-&lt;/div&gt;</code></div>
+                    &lt;div class="card-header"&gt;
+                    &lt;h3 class="card-title"&gt;Judul Kartu&lt;/h3&gt;
+                    &lt;div class="card-tools"&gt;
+                    &lt;a href="#" class="btn btn-primary btn-sm"&gt;Tambah&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="card-body"&gt;...&lt;/div&gt;
+                    &lt;/div&gt;</code></div>
         </section>
 
         {{-- 9. TABLES --}}
         <section class="sg-section" id="tabel">
             <h2 class="sg-title">Tables</h2>
-            <p class="text-muted mb-4">DataTables dengan AdminLTE styling. Wajib menggunakan <code>DataTable()</code> jQuery plugin.</p>
+            <p class="text-muted mb-4">DataTables dengan AdminLTE styling. Wajib menggunakan <code>DataTable()</code>
+                jQuery plugin.</p>
 
             <div class="card">
                 <div class="card-header">
@@ -700,9 +752,12 @@ function showToast(type, message) {
                                 <td><span class="badge bg-success">Published</span></td>
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm">
-                                        <a href="#" class="btn btn-info" title="Lihat"><i class="bi bi-eye"></i></a>
-                                        <a href="#" class="btn btn-warning" title="Edit"><i class="bi bi-pencil"></i></a>
-                                        <button class="btn btn-danger" title="Hapus"><i class="bi bi-trash"></i></button>
+                                        <a href="#" class="btn btn-info" title="Lihat"><i
+                                                class="bi bi-eye"></i></a>
+                                        <a href="#" class="btn btn-warning" title="Edit"><i
+                                                class="bi bi-pencil"></i></a>
+                                        <button class="btn btn-danger" title="Hapus"><i
+                                                class="bi bi-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -715,9 +770,12 @@ function showToast(type, message) {
                                 <td><span class="badge bg-secondary">Draft</span></td>
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm">
-                                        <a href="#" class="btn btn-info" title="Lihat"><i class="bi bi-eye"></i></a>
-                                        <a href="#" class="btn btn-warning" title="Edit"><i class="bi bi-pencil"></i></a>
-                                        <button class="btn btn-danger" title="Hapus"><i class="bi bi-trash"></i></button>
+                                        <a href="#" class="btn btn-info" title="Lihat"><i
+                                                class="bi bi-eye"></i></a>
+                                        <a href="#" class="btn btn-warning" title="Edit"><i
+                                                class="bi bi-pencil"></i></a>
+                                        <button class="btn btn-danger" title="Hapus"><i
+                                                class="bi bi-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -735,21 +793,21 @@ function showToast(type, message) {
             </div>
 
             <div class="sg-code mt-3"><code>// Init DataTable
-&lt;script&gt;
-$(document).ready(function() {
-    $('#myTable').DataTable({
-        paging: true,
-        searching: true,
-        ordering: true,
-        responsive: true,
-        lengthChange: true,
-        autoWidth: false,
-        pageLength: 10,
-        language: { url: '@{{ asset('vendor/datatables/i18n/id.json') }}' },
-        columnDefs: [{ orderable: false, targets: -1 }]
-    });
-});
-&lt;/script&gt;</code></div>
+                    &lt;script&gt;
+                    $(document).ready(function() {
+                    $('#myTable').DataTable({
+                    paging: true,
+                    searching: true,
+                    ordering: true,
+                    responsive: true,
+                    lengthChange: true,
+                    autoWidth: false,
+                    pageLength: 10,
+                    language: { url: '@{{ asset('vendor/datatables/i18n/id.json') }}' },
+                    columnDefs: [{ orderable: false, targets: -1 }]
+                    });
+                    });
+                    &lt;/script&gt;</code></div>
         </section>
 
         {{-- 10. BADGES --}}
@@ -783,7 +841,7 @@ $(document).ready(function() {
                     </div>
 
                     <div class="sg-code"><code>&lt;span class="badge bg-success"&gt;Published&lt;/span&gt;
-&lt;span class="badge bg-secondary"&gt;Draft&lt;/span&gt;</code></div>
+                            &lt;span class="badge bg-secondary"&gt;Draft&lt;/span&gt;</code></div>
                 </div>
             </div>
         </section>
@@ -791,7 +849,8 @@ $(document).ready(function() {
         {{-- 11. SIDEBAR --}}
         <section class="sg-section" id="sidebar">
             <h2 class="sg-title">Sidebar</h2>
-            <p class="text-muted mb-4">Sidebar AdminLTE untuk role Admin dan Guru. Menggunakan ikon Bootstrap Icons.</p>
+            <p class="text-muted mb-4">Sidebar AdminLTE untuk role Admin dan Guru. Menggunakan ikon Bootstrap Icons.
+            </p>
 
             <div class="row g-4">
                 <div class="col-md-6">
@@ -810,11 +869,11 @@ $(document).ready(function() {
                         <div class="nav-item"><i class="bi bi-file-text"></i> Laporan</div>
                     </div>
                     <div class="sg-code mt-2"><code>&lt;li class="nav-item"&gt;
-    &lt;a href="#" class="nav-link"&gt;
-        &lt;i class="nav-icon bi bi-book"&gt;&lt;/i&gt;
-        &lt;p&gt;Kelola Materi&lt;/p&gt;
-    &lt;/a&gt;
-&lt;/li&gt;</code></div>
+                            &lt;a href="#" class="nav-link"&gt;
+                            &lt;i class="nav-icon bi bi-book"&gt;&lt;/i&gt;
+                            &lt;p&gt;Kelola Materi&lt;/p&gt;
+                            &lt;/a&gt;
+                            &lt;/li&gt;</code></div>
                 </div>
                 <div class="col-md-6">
                     <p class="sg-sub">Guru</p>
@@ -835,7 +894,8 @@ $(document).ready(function() {
         {{-- 12. QUIZ BUILDER & AI COMPONENTS --}}
         <section class="sg-section" id="ai">
             <h2 class="sg-title">AI Components & Quiz Builder</h2>
-            <p class="text-muted mb-4">Komponen AI (Generate Ringkasan & Quiz) dan Quiz Builder interaktif pada halaman create/edit materi.</p>
+            <p class="text-muted mb-4">Komponen AI (Generate Ringkasan & Quiz) dan Quiz Builder interaktif pada halaman
+                create/edit materi.</p>
 
             <div class="sg-preview-wrap">
                 <div class="sg-preview-body">
@@ -883,7 +943,8 @@ $(document).ready(function() {
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <h6 class="mb-0">Soal 1</h6>
-                                        <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Hapus</button>
+                                        <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i>
+                                            Hapus</button>
                                     </div>
                                     <div class="mb-2">
                                         <textarea class="form-control" rows="2" placeholder="Pertanyaan">Apa ibu kota Indonesia?</textarea>
@@ -893,32 +954,37 @@ $(document).ready(function() {
                                             <input type="radio" name="jawaban_benar_0" checked>
                                         </div>
                                         <span class="input-group-text">A</span>
-                                        <input type="text" class="form-control" value="Jakarta" placeholder="Pilihan A">
+                                        <input type="text" class="form-control" value="Jakarta"
+                                            placeholder="Pilihan A">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text">
                                             <input type="radio" name="jawaban_benar_0">
                                         </div>
                                         <span class="input-group-text">B</span>
-                                        <input type="text" class="form-control" value="Surabaya" placeholder="Pilihan B">
+                                        <input type="text" class="form-control" value="Surabaya"
+                                            placeholder="Pilihan B">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text">
                                             <input type="radio" name="jawaban_benar_0">
                                         </div>
                                         <span class="input-group-text">C</span>
-                                        <input type="text" class="form-control" value="Bandung" placeholder="Pilihan C">
+                                        <input type="text" class="form-control" value="Bandung"
+                                            placeholder="Pilihan C">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text">
                                             <input type="radio" name="jawaban_benar_0">
                                         </div>
                                         <span class="input-group-text">D</span>
-                                        <input type="text" class="form-control" value="Semarang" placeholder="Pilihan D">
+                                        <input type="text" class="form-control" value="Semarang"
+                                            placeholder="Pilihan D">
                                     </div>
                                     <div class="mt-2">
                                         <small class="text-muted">Penjelasan:</small>
-                                        <input type="text" class="form-control form-control-sm" placeholder="Penjelasan jawaban (opsional)">
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Penjelasan jawaban (opsional)">
                                     </div>
                                 </div>
                             </div>
@@ -930,27 +996,28 @@ $(document).ready(function() {
                     </div>
 
                     <div class="sg-code mt-3"><code>&lt;!-- Generate Ringkasan --&gt;
-&lt;button type="button" class="btn btn-info btn-sm" onclick="generateRingkasan()"&gt;
-    &lt;i class="bi bi-magic"&gt;&lt;/i&gt; Generate Ringkasan AI
-&lt;/button&gt;
-&lt;div id="loadingRingkasan" class="spinner-border spinner-border-sm text-info d-none"&gt;
-    &lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;
-&lt;/div&gt;
+                            &lt;button type="button" class="btn btn-info btn-sm" onclick="generateRingkasan()"&gt;
+                            &lt;i class="bi bi-magic"&gt;&lt;/i&gt; Generate Ringkasan AI
+                            &lt;/button&gt;
+                            &lt;div id="loadingRingkasan"
+                            class="spinner-border spinner-border-sm text-info d-none"&gt;
+                            &lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;
+                            &lt;/div&gt;
 
-&lt;!-- Generate Quiz --&gt;
-&lt;div class="card card-outline card-info mt-3" id="quizSection"&gt;
-    &lt;div class="card-header"&gt;
-        &lt;h5 class="card-title"&gt;Quiz Builder&lt;/h5&gt;
-    &lt;/div&gt;
-    &lt;div class="card-body"&gt;
-        &lt;div id="soalContainer"&gt;
-            &lt;!-- Soal items rendered by JS --&gt;
-        &lt;/div&gt;
-        &lt;button type="button" class="btn btn-sm btn-success" onclick="tambahSoal()"&gt;
-            &lt;i class="bi bi-plus-lg"&gt;&lt;/i&gt; Tambah Soal
-        &lt;/button&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></div>
+                            &lt;!-- Generate Quiz --&gt;
+                            &lt;div class="card card-outline card-info mt-3" id="quizSection"&gt;
+                            &lt;div class="card-header"&gt;
+                            &lt;h5 class="card-title"&gt;Quiz Builder&lt;/h5&gt;
+                            &lt;/div&gt;
+                            &lt;div class="card-body"&gt;
+                            &lt;div id="soalContainer"&gt;
+                            &lt;!-- Soal items rendered by JS --&gt;
+                            &lt;/div&gt;
+                            &lt;button type="button" class="btn btn-sm btn-success" onclick="tambahSoal()"&gt;
+                            &lt;i class="bi bi-plus-lg"&gt;&lt;/i&gt; Tambah Soal
+                            &lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;/div&gt;</code></div>
                 </div>
             </div>
         </section>
@@ -997,7 +1064,9 @@ $(document).ready(function() {
                                 </li>
                                 <li class="nav-item dropdown user-menu">
                                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                        <img src="{{ asset('images/default-user.jpg') }}" class="user-image rounded-circle shadow" style="width:30px;height:30px" alt="Avatar">
+                                        <img src="{{ asset('images/default-user.jpg') }}"
+                                            class="user-image rounded-circle shadow" style="width:30px;height:30px"
+                                            alt="Avatar">
                                         <span class="d-none d-md-inline ms-1">Admin User</span>
                                     </a>
                                 </li>
